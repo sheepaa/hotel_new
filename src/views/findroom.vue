@@ -347,8 +347,8 @@ export default {
 <style scoped="scoped">
 .box-card {
   height: 30vh;
-  margin: -7rem 1rem 0;
-  background: rgba(0,0,0,0.5)
+  margin: -20rem 1rem 0;
+  background: rgba(255,255,255,0.5)
 }
 
 .time {
