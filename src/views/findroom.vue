@@ -32,7 +32,6 @@
                       style="width: 100%"
                       :options="$datePickerOptions"
                       value-format="yyyy-MM-dd"
-                      :default-value=today
                     ></el-date-picker>
                   </el-form-item>
                 </el-col>
@@ -160,8 +159,7 @@ export default {
       // hotel_name = this.$route.query.
       dialogVisible: false,
       dialogVisibleInfo: false, //查看详情
-      today: "",
-      tomorrow: "",
+    
       displayInfo: {
         Square: "",
         Floor: "",
@@ -179,7 +177,7 @@ export default {
           room_type: "大床房",
           // intro: "good",
           price: 1000,
-          Intro: {
+          intro: {
             Square: "1",
             Floor: "2",
             WIFI: "3",
@@ -191,7 +189,7 @@ export default {
           room_type: "双床房",
           // intro: "good",
           price: 100,
-          Intro: {
+          intro: {
             Square: "2",
             Floor: "3",
             WIFI: "4",
@@ -243,38 +241,18 @@ export default {
           console.log("error");
         });
     },
-    //日期 -> 字符串
-    // changeTimeStr(str) {
-    //   str = str.toString();
-    //   str = str.replace(/ GMT.+$/, ""); // Or str = str.substring(0, 24)
-    //   let d = new Date(str);
-    //   let a = [
-    //     d.getFullYear(),
-    //     d.getMonth() + 1,
-    //     d.getDate(),
-    //     d.getHours(),
-    //     d.getMinutes(),
-    //     d.getSeconds(),
-    //   ];
-    //   for (var i = 0, len = a.length; i < len; i++) {
-    //     if (a[i] < 10) {
-    //       a[i] = "0" + a[i];
-    //     }
-    //   }
-    //   str = a[0] + "-" + a[1] + "-" + a[2] + " " + a[3] + ":" + a[4];
-    //   return str;
-    // },
+
     getDate: function () {
       var _this = this;
       let yy = new Date().getFullYear();
       let mm = new Date().getMonth() + 1;
       let dd = new Date().getDate();
-      let hh = new Date().getHours();
-        new Date().getMinutes() < 10
-          ? "0" + new Date().getMinutes()
-          : new Date().getMinutes();
-      this.today = yy + "-" + mm + "-" + dd;
-      this.tomorrow = yy + "-" + mm + "-" + (dd + 1) ;
+      this.form.comedate = yy + "-" + mm + "-" + dd;
+      let tomorrow = new Date(new Date().getTime()+86400000);
+      let yyt = tomorrow.getFullYear();
+      let mmt = tomorrow.getMonth() + 1;
+      let ddt = tomorrow.getDate()
+      this.form.leavedate = yyt + "-" + mmt + "-" + ddt;
     },
     // 保存信息并且跳转到订房
     toOrder(room) {
@@ -309,15 +287,12 @@ export default {
   mounted() {
     this.getDate();
 
-    this.$store.commit("setDate", [this.today, this.tomorrow]);
-    console.log(this.$store.state.order.start);
-    console.log(this.$store.state.order.end);
-    console.log("end");
+    this.$store.commit("setDate", [this.form.comedate, this.form.leavedate]);
     this.$axios
       .post("http://localhost:9091/customer/select4", {
         hotel_name: this.$store.state.hotelName,
-        start: this.today,
-        end: this.tomorrow,
+        start: this.form.comedate,
+        end: this.form.leavedate,
       })
       .then(
         (res) => {
