@@ -64,14 +64,6 @@
         </el-card>
 
         <el-row class="mt-1">
-          <el-card class="mb-1 ml-1 mr-1">
-            <div class="text item">
-              <el-button type="primary" @click="unity"
-                >点击查看客房模型</el-button
-              >
-            </div>
-          </el-card>
-
           <!-- TODO: 调整显示格式 -->
           <el-col
             :span="22"
@@ -80,7 +72,7 @@
             :offset="1"
             class="mb-1"
           >
-            <el-card :body-style="{ padding: '0px' }">
+            <el-card :body-style="{ padding: '0px' }" class="transparent">
               <el-row>
                 <el-col :span="8">
                   <img :src="room.coverImage" class="image" />
@@ -347,8 +339,8 @@ export default {
 <style scoped="scoped">
 .box-card {
   height: 30vh;
-  margin: -20rem 1rem 0;
-  background: rgba(255,255,255,0.5)
+  margin: -40rem 1rem 0;
+  background: rgba(255,255,255,0.7)
 }
 
 .time {
@@ -412,5 +404,9 @@ export default {
 
 .black {
   color: #303133;
+}
+
+.transparent {
+  background: rgba(255,255,255,0.8)
 }
 </style>
