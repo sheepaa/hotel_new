@@ -136,6 +136,19 @@
         </el-card>
         <!--        <el-button type="success" @click="oktest">预订成功测试</el-button>
         <el-button type="danger" @click="failtest">预订失败测试</el-button> -->
+
+        <el-card class="box-card ml-1 mr-1 mb-1 mt-1">
+          <img :src="pingmian" alt="" class="image" />
+        </el-card>
+
+
+
+
+
+
+
+
+
       </el-main>
       <el-footer class="footer">
         <footbar></footbar>
@@ -158,6 +171,7 @@ import store from "./../store";
 export default {
   data() {
     return {
+      pingmian: require('@/assets/img/pingmian_final.jpg'),
       resinfo: {
         id: "",
         type: "",
@@ -335,9 +349,9 @@ export default {
 
 <style scoped="scoped">
 .res-bg {
-  background: url(../assets/img/reservation.jpg);
+  background: url(../assets/img/reservation-c.jpg);
   background-size: cover;
-  height: 30vh;
+  height: 95vh;
   border: 0px solid transparent;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
@@ -352,7 +366,8 @@ export default {
 }
 
 .res-form {
-  margin: -5rem 1rem 1rem 1rem;
+  margin: -70rem 1rem 1rem 1rem;
+  background-color: rgba(255,255,255,0.8);
 }
 
 /* .el-card__body {
@@ -367,4 +382,12 @@ export default {
   font-size: 1.3rem;
   color: #f56c6c;
 }
+.image {
+    height: 30rem;
+		display: block;
+		padding: 5rem;
+		border: 1px solid transparent;
+		border-radius: 20px;
+    margin: auto
+	}
 </style>
