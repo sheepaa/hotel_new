@@ -45,6 +45,9 @@ export default new Vuex.Store({
       state.order.start = start;
       state.order.end = end;
     },
+    setHotelName(state,hotelName){
+      state.hotelName = hotelName;
+    },
     setOrder(state, [hotel_name, room_type, start, end]){
       console.log("in setorder")
       state.order.hotelName = hotel_name;

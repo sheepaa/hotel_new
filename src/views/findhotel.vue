@@ -12,19 +12,23 @@
 			</div>
 
 			<el-col :span="22" v-for="(hotel, index) in listdata" :key="index" :offset="0" class="hotel-card">
-            <el-card :body-style="{ padding: '2rem'}" class="purple" v-if="hotel.hotel_name==$store.state.city">
+            <el-card :body-style="{ padding: '2rem'}" class="purple" v-if="hotel.hotel_location==$store.state.city">
               <el-row>
                 <el-col :span="5">
                   <img :src="hotel.photo" alt="" class="image" />
                 </el-col>
-                <el-col :span="19">
+                <el-col :span="15">
                   <div style="padding: 14px" class="text-left hotel">
                     <p class="hotel-title">
-                      {{ hotel.hotel_name }}
+                      {{ hotel.hotel_location }}
                     </p>
-                    <p class="hotel-intro">{{ hotel.intro }}</p>
+                    <p class="hotel-intro">{{ hotel.intro}}</p>
                   </div>
                 </el-col>
+				<el-col :span="4" >
+					<el-button @click="toFindRoom(hotel)" type="primary" round size="medium">enter</el-button>
+
+				</el-col>
               </el-row>
             </el-card>
           	</el-col>
@@ -47,25 +51,26 @@ import amap from '../components/amap.vue';
 			return {
 
 				listdata: [{
-					hotel_name: '香港',
+					hotel_location: '香港',
+					hotel_name:"HongKong OOAD hotel WangJiao buranch",
 					photo: require("../assets/img/Hongkong.jpg"),
-					intro: '开业90年，半岛乃全球豪华酒店业翘楚，时至今天继续为全球顶级酒店奠立高水平新标准。今年，《福布斯旅游指南》年度星级评级名单上，半岛酒店集团旗下十间半岛酒店皆获五星级评，成为《福布斯旅游指南》评选史上初次有酒店集团旗下所有酒店均荣获五星评级的酒店品牌。作为旗舰酒店的香港半岛延续「远东贵妇」的传奇，经典尊贵的气派无与伦比，高雅风采恒久隽永，融合了东西方待客之道的精髓。下榻半岛酒店，重新感受早些年代的旅游璀璨魅力，并观赏酒店内摆放的众多古迹文物。'
-					// feature: 'da'
+					intro: "In its 90 years of operation, the Peninsula has been a leader in the global luxury hotel industry and continues to set a new high standard for top hotels in the world. This year, all 10 of its Peninsula hotels received five-star ratings on Forbes Travel Guide's annual star rating list, making it the first time in the history of Forbes Travel that all of the group's hotels received five-star ratings. As a flagship hotel, the Peninsula Hong Kong continues the legend of the Lady of the Far East, with an incomparable style and timeless elegance, combining the best of Eastern and Western hospitality. Stay at the Peninsula Hotel and feel the glamorous charm of travel in the early years, as well as appreciate the numerous historical relics displayed in the hotel." 
 				},{
-					hotel_name: '广州',
+					hotel_location: '广州',
+					hotel_name:"GuangZhou OOAD hotel XiaJiao branch",
 					photo: require("../assets/img/Guangzhou.jpg"),
-					intro: '广州中国大酒店坐落于风景怡人的越秀公园与流花湖公园的环抱中，紧邻历史悠久的西汉南越王博物馆，是广州唯一由国际管理集团管理的五星级酒店，更是万豪国际集团在这个发展迅速的大都会的旗舰酒店。. 广州及南中国在过去二十多年急促转型，经济及文化发展多元迅速，在国际间占据举足轻重的地位，推动酒店业蓬勃发展。. 酒店雄踞广州市中心，尽占地利优势，与火车站相距咫尺，毗邻中国出口商品交易会，酒店门外连接贯通南北、东西主干地铁，位置极为便利。. 离机场距离（公里）：33. 离火车站距离（公里）：2. 离市中心距离（公里）：3. 离广州火车站距离（公里）：2. 周围景观：流花会馆、临近越秀公园、流花公园、中山纪念堂、南越王墓、陈家祠. 酒店地址：广州市流花路（流花交易会馆旁）'
-					// feature: 'da'
+					intro:"Surrounded by the scenic Yuexiu Park and Liuhua Lake Park, and close to the historic Nanyue King Museum of the Western Han Dynasty, China Hotel Guangzhou is the only five-star hotel managed by an international management group in Guangzhou, and the flagship hotel of Marriott International in this rapidly growing metropolis. In the past 20 years, Guangzhou and South China have undergone rapid transformation, rapid diversification of economic and cultural development, and occupy a pivotal position in the international hotel industry, which promotes the vigorous development of the hotel industry. Located in the center of Guangzhou, the hotel occupies an area of advantage, and is close to the railway station, adjacent to the China Export Commodities Fair, outside the hotel connecting the north and south, east and west main subway, the location is very convenient."
 				},{
-					hotel_name: '上海',
+					hotel_location: '上海',
+					hotel_name:"ShangHai OOAD hotel Century Avenue branch",
 					photo: require("../assets/img/Shanghai.jpg"),
-					intro: '上海大酒店位于上海最繁华的外滩-南京东路商务休闲圈内，毗邻中华第一街——南京东路步行街，与世纪广场仅一步之隔。上海大酒店拥有豪华客/套房。超大的空间，典雅的设计，周到的服务，令您畅享舒适、豪华、温馨的独特氛围。一楼咖啡厅可享受上海都市的浪漫情调，二楼法国餐厅提供经典纯正的法式菜肴，除了无柱式、7米超高空间的设计概念外，酒店还配备领先的高科技会议设施，加上宽敞的序厅和另两个可分割式多功能厅。'
+					intro: "Shanghai Grand Hotel is located in the business and leisure area of East Nanjing Road, the most prosperous Bund in Shanghai. It is adjacent to Zhonghua First Street -- East Nanjing Road Pedestrian Street, and is only one step away from Century Square. Shanghai Grand Hotel has deluxe guest/suites. Large space, elegant design, thoughtful service, so that you enjoy a comfortable, luxurious, warm unique atmosphere. The cafe on the first floor can enjoy the romantic atmosphere of Shanghai city, and the French restaurant on the second floor provides classic and authentic French cuisine. In addition to the design concept of column free, 7-meter high space, the hotel is also equipped with leading high-tech conference facilities, plus a spacious lobby and two other divisible multi-function rooms. "
 					// feature: 'da'
 				},{
-					hotel_name: '北京',
+					hotel_location: '北京',
+					hotel_name:"Beijing OOAD hotel DaXing branch",
 					photo: require("../assets/img/Beijing.jpg"),
-					intro: '北京国贸大酒店傲然耸立于北京中央商务区（CBD）核心地带，雄踞于81层国贸大厦的上层部分。酒店紧邻国贸商城，店铺琳琅满目，有上百家餐厅和酒吧。酒店房间面积从55平米起，室内均为落地窗设计，京城美景一览无余。乘坐电梯至64层即可到达北京国贸大酒店前台。步入酒店大堂，富有现代感的设计风格，将西方视觉张力与东方含蓄之美优雅地融为一体。漫步云端，感觉世界就在脚下。位于大厦64-80层，在西面朝向的客房和套房内可观赏3公里以外故宫之巅的迷人景观；位于64层的贵宾堂全天候供应咖啡、茶、软饮、果汁及茶点小食位于酒店78层的室内恒温无边游泳池四间设计独特的餐厅、一间酒吧、一个酒廊以及四个优雅的私属用餐空间'
-					// feature: 'da'
+					intro: "The World Trade Hotel Beijing stands proudly in the heart of Beijing's central business District (CBD), perched on the upper floors of the 81-story World Trade Tower. The hotel is adjacent to the International Trade Mall, with a variety of shops and hundreds of restaurants and bars. Rooms start at 55 square meters and feature floor-to-ceiling Windows that offer panoramic views of the city. Take the elevator to the 64th floor to the front desk of Beijing International Trade Hotel. Step into the hotel lobby, full of modern design style, Western visual tension and Oriental implicit beauty gracefully integrated. Walk in the clouds, feel the world beneath your feet. Located on the 64th-80th floor of the building, the west facing guestrooms and suites offer stunning views of the top of the Forbidden City, 3 kilometers away; The VIP Lounge on the 64th floor serves coffee, tea, soft drinks, juice and refreshments 24/7. The indoor heated infinity pool on the 78th floor features four uniquely designed restaurants, a bar, a lounge and four elegant private dining Spaces."
 				}],
 
 				center: [121.59996, 31.197646],
@@ -107,6 +112,11 @@ import amap from '../components/amap.vue';
 			amap,
 		},
 		methods: {
+			toFindRoom(hotel){
+				this.$store.commit("setHotelName",hotel.hotel_name);
+				this.$router.push("/findroom");
+			}
+
 		},
 		mounted() {
 		}
