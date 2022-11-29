@@ -1,0 +1,80 @@
+.content-window-card {
+    position: relative;
+    box-shadow: none;
+    bottom: 0;
+    left: 0;
+    width: auto;
+    padding: 0;
+  }
+  
+  .content-window-card p {
+    height: 2rem;
+  }
+  
+  .custom-info {
+    /* border: solid 1px silver; */
+  }
+  
+  div.info-top {
+    position: relative;
+    background: #0f49b5;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    color: #fff;
+    padding: 0 10px;
+  }
+  
+  div.info-top span:nth-child(2) {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+  }
+  
+  div.info-top img {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    transition-duration: 0.25s;
+    width: 15px;
+  }
+  
+  div.info-top img:hover {
+    box-shadow: 0px 0px 5px #000;
+  }
+  
+  div.info-middle {
+    background: rgba(0,54,98,.8)!important;
+    font-size: 12px;
+    padding: 10px 6px;
+    line-height: 20px;
+    color: #fff;
+  }
+  
+  div.info-bottom {
+    height: 0px;
+    width: 100%;
+    clear: both;
+    text-align: center;
+    width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 15px solid transparent;
+      border-top: 20px solid rgba(0,54,98,.8);
+  }
+  
+  div.info-bottom img {
+    position: relative;
+    z-index: 104;
+  }
+  
+  
+  .info-middle img {
+    float: left;
+    margin-right: 6px;
+  }
