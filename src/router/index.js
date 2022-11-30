@@ -135,6 +135,22 @@ const routes = [
     },
   },
   {
+    path: '/shop',
+    name: 'shop',
+    component: () => import('@/views/shop.vue'),
+    meta: {
+      title: "积分商城"
+    },
+  },
+  {
+    path: '/shou',
+    name: 'shou',
+    component: () => import('@/views/shou.vue'),
+    meta: {
+      title: "我的收藏"
+    },
+  },
+  {
     path: '/submitfail',
     name: 'submitfail',
     component: () => import('@/views/submitfail.vue'),

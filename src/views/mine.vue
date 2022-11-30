@@ -59,6 +59,28 @@
                 </router-link>
               </el-col>
             </el-row>
+            <el-row class="mt-1">
+              <el-col :span="6" class="text-center">
+                <router-link to="/shop" class="text-plain">
+                  <p class="tool-icon">
+                    <i class="el-icon-s-shop order"></i>
+                  </p>
+                  <p class="tool-text">
+                    积分商城
+                  </p>
+                </router-link>
+              </el-col>
+              <el-col :span="6" class="text-center">
+                <router-link to="/shou" class="text-plain">
+                  <p class="tool-icon">
+                    <i class="el-icon-star-off order"></i>
+                  </p>
+                  <p class="tool-text">
+                    我的收藏
+                  </p>
+                </router-link>
+              </el-col>
+            </el-row>
           </div>
         </el-card>
         <div class="btn-logout">
@@ -142,7 +164,7 @@
   }
 
   .mine-card {
-    margin: -40rem 5rem 1rem 5rem;
+    margin: -40rem 12rem 1rem 12rem;
     background-color: rgba(255,255,255,0.9);
   }
 
