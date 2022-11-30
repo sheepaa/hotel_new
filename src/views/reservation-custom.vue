@@ -26,24 +26,6 @@
                 ></el-form-item>
               </el-form-item>
 
-              <!-- <el-form-item label="入住时间" required>
-								<el-col :span="24" class="mb-1">
-									<el-form-item prop="indate"> -->
-              <!-- <el-date-picker :disabled="lockCondition" type="datetime" placeholder="入住日期" v-model="resinfo.indate" style="width: 100%;">
-										</el-date-picker> -->
-              <!-- <el-form-item :label=$store.state.order.start></el-form-item>
-									</el-form-item>
-								</el-col> -->
-              <!-- <el-col class="line text-center" :span="24">至</el-col> -->
-              <!-- <el-col :span="24">
-									<el-form-item prop="leavedate"> -->
-              <!-- <el-date-picker :disabled="lockCondition" type="datetime" placeholder="离店日期" v-model="resinfo.leavedate" style="width: 100%;">
-										</el-date-picker> -->
-              <!-- <el-form-item :label=$store.state.order.start></el-form-item>
-									</el-form-item>
-								</el-col>
-							</el-form-item> -->
-
               <el-form-item label="入住日期" @click="resolveData">
                 <!-- <el-select v-model="resinfo.type" placeholder="请选择" :disabled="lockCondition">
 									<el-option v-for="item in roomtype" :key="item.id" :label="item.typeName" :value="item.id">
@@ -85,23 +67,7 @@
                   </el-option>
                 </el-select>
               </el-form-item>
-<!-- 
-              <el-form-item label="住店人数" prop="num" >
-                <el-input-number
-                  v-model="resinfo.num"
-                  :min="1"
-                  :max="maxp"
-                  label="请输入"
-                  :disabled="isNotSelect"
-                ></el-input-number>
-                <span class="ml-1">人</span>
-              </el-form-item> -->
-              <!-- <el-form-item label="提供发票" prop="invoice">
-                <el-switch
-                  v-model="resinfo.isNeedInvoice"
-                  :disabled="isNotSelect"
-                ></el-switch>
-              </el-form-item> -->
+
               <el-form-item label="价格">
                 <!-- <span v-model="resinfo.type" class="room-price">{{sumprice}} 元</span> -->
                 <el-form-item
@@ -111,7 +77,7 @@
               <el-form-item>
                 <el-button
                   type="primary"
-                  @click="submitForm('ruleForm')"
+                  @click="toPay()"
                 
                   >立即预订</el-button
                 >
@@ -208,6 +174,31 @@ export default {
     dialogComponent,
   },
   methods: {
+    toPay(){
+      if (this.roomnumber.length == 0){
+        alert("please choose a roomnumber")
+      }else{
+        this.$store.state.order.roomNumber = this.roomnumber;
+      }
+      this.axios
+        .post("http://localhost:9091/customer/addOrder", {
+          hotel_name:this.$store.state.order.hotelName,
+          start:this.$store.state.order.start,
+          end:this.$store.state.order.end,
+          room_number:this.$store.state.order.roomNumber,
+          phone_number:this.$store.state.order.phone_number,
+          price:this.$store.state.order.priceTotal,
+        })
+        .then((res) => {
+          alert("submit ok")
+          this.$router.push("/submitok");
+        })
+        .catch((res) => {
+          alert("submit fail")
+          this.$router.push("/submitfail");
+        });
+    },
+
     submitForm(formName) {
       this.dialogVisible = true;
     },
