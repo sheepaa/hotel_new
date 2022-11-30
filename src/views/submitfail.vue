@@ -6,9 +6,9 @@
           <img src="../assets/img/fail.png" class="img-status" />
         </el-col>
         <el-col :span="24">
-          <div class="text text-left">
-            <p>非常抱歉，您的订单提交出现了一些问题，订单未能提交成功。</p>
-            <p>请您稍后再尝试提交。</p>
+          <div class="text text-centre">
+            <p>由于网络故障，您的订单没有成功提交。</p>
+            <p>请稍后重新提交</p>
           </div>
           <!-- <el-button type="warning" @click="contact">意见反馈</el-button> -->
           <el-button @click="back">返回主页</el-button>
@@ -53,6 +53,6 @@
   }
   
   .box-card {
-    margin: 1rem;
+    margin: 18rem;
   }
 </style>

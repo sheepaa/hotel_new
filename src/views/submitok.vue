@@ -6,9 +6,9 @@
           <img src="../assets/img/ok.png" class="img-status" />
         </el-col>
         <el-col :span="24">
-          <div class="text text-left">
-            <p>我们已经收到您的订单提交信息，请按照预订的入住时间到前台办理入住手续。</p>
-            <p>您可以在我的→我的订单中查看所有的订单信息。</p>
+          <div class="text text-centre">
+            <p>订单已经成功提交，请再次确认订单信息。</p>
+            <p>欢迎入住酒店！</p>
           </div>
           <el-button type="primary" @click="check">查看订单</el-button>
           <el-button @click="back">返回主页</el-button>
@@ -53,6 +53,6 @@
   }
   
   .box-card {
-    margin: 1rem;
+    margin: 18rem;
   }
 </style>
