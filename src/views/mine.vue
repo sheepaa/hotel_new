@@ -7,16 +7,10 @@
           <div class="text item">
             <el-row>
               <el-col :span="6" class="text-right">
-                <img v-if="userdata.sex == 1" src="../assets/img/man.png" class="avatar" />
-                <img v-else src="../assets/img/woman.png" class="avatar" />
+                <img src="../assets/img/lk.jpg" class="avatar" />
               </el-col>
               <el-col :span="18">
-                <p class="username">
-                  {{userdata.userName}}
-                  <i v-if="userdata.sex == 1" class="el-icon-male man"></i>
-                  <i v-else class="el-icon-female woman"></i>
-                </p>
-                <p class="userid">id：{{userdata.id}}</p>
+                <p class="userid">ID: {{userdata.id}}</p>
               </el-col>
             </el-row>
           </div>
