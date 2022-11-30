@@ -1,24 +1,28 @@
 <template>
   <el-dialog title="房间平面分布" :visible.sync="detailVisible" width="90%">
     <el-card class="box-card ml-4 mr-4 mb-1 mt-1 transparament">
-      <el-button type="warning" disabled class="double1">双1</el-button>
-      <el-button type="warning" disabled class="double1">双2</el-button>
-      <el-button type="warning" disabled class="double1">双3</el-button>
-      <el-button type="warning" disabled class="double1">双4</el-button>
-      <el-button type="warning" disabled class="double1">双5</el-button>
-      <el-button type="warning" disabled class="double1">双6</el-button>
+      <el-button type="warning" disabled class="double1 down">双1</el-button>
+      <el-button type="warning" disabled class="double1 down">双2</el-button>
+      <el-button type="warning" disabled class="double2 down">双3</el-button>
+      <el-button type="warning" disabled class="double2 down">双4</el-button>
+      <el-button type="warning" disabled class="double3 down">双5</el-button>
+      <el-button type="warning" disabled class="double3 down">双6</el-button>
       <img :src="pingmiantest" @click="a" alt="" class="imagee" />
-      <el-button type="warning">大1</el-button>
-      <el-button type="warning">大2</el-button>
-      <el-button type="warning">大3</el-button>
-      <el-button type="warning">大4</el-button>
-      <el-button type="warning">大5</el-button>
-      <el-button type="warning">大6</el-button>
-      <el-button type="warning">单1</el-button>
-      <el-button type="warning">单2</el-button>
-      <el-button type="warning">单3</el-button>
-      <el-button type="success" @click="close">确认</el-button>
-      <el-button type="danger" @click="close">取消</el-button>
+      <el-row>
+        <el-button type="warning" disabled class="double1 up">大1</el-button>
+        <el-button type="warning" disabled class="double1 up">大2</el-button>
+        <el-button type="warning" disabled class="double2 up">大3</el-button>
+        <el-button type="warning" disabled class="double2 up">大4</el-button>
+        <el-button type="warning" disabled class="double3 up">大5</el-button>
+        <el-button type="warning" disabled class="double3 up">大6</el-button>
+        <el-button type="warning" disabled class="double4 up">单1</el-button>
+        <el-button type="warning" disabled class="double5 up">单2</el-button>
+        <el-button type="warning" disabled class="double5 up">单3</el-button>
+      </el-row>
+      <el-row>
+        <el-button type="success" @click="close" class="confirm">确认</el-button>
+        <el-button type="danger" @click="close" class="confirm">取消</el-button>
+      </el-row>
     </el-card>
   </el-dialog>
 </template>
@@ -44,10 +48,10 @@ export default {
       this.pageY = e.y; //鼠标点击位置
       this.clientWidth = document.body.clientWidth / 29.698;
       this.clientHeight = 560;
-      console.log(this.pageX)
-      console.log(this.pageY)
-      console.log(document.body.clientWidth)
-      console.log(document.body.clientHeight)
+      console.log(this.pageX);
+      console.log(this.pageY);
+      console.log(document.body.clientWidth);
+      console.log(document.body.clientHeight);
       if (
         this.pageX >= 10.4 * this.clientWidth &&
         this.pageX < 11.4 * this.clientWidth &&
@@ -152,6 +156,37 @@ export default {
 
 .double1 {
   position: relative;
-  left: 200px;
+  left: 215px;
+}
+
+.double2 {
+  position: relative;
+  left: 240px;
+}
+
+.double3 {
+  position: relative;
+  left: 265px;
+}
+
+.double4 {
+  position: relative;
+  left: 295px;
+}
+.double5 {
+  position: relative;
+  left: 318px;
+}
+.up {
+  bottom: 20px;
+}
+
+.down {
+  bottom: -20px;
+}
+
+.confirm {
+  position: relative;
+  left: 40%;
 }
 </style>
