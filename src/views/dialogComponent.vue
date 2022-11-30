@@ -27,48 +27,84 @@ export default {
     a(e) {
       this.pageX = e.x;
       this.pageY = e.y; //鼠标点击位置
-      this.clientWidth = document.body.clientWidth / 17.978;
-      this.clientHeight = document.body.clientHeight / 3;
-      console.log(this.pageX)
-      console.log(this.pageY)
-      console.log(document.body.clientWidth)
-      console.log(document.body.clientHeight)
+      this.clientWidth = document.body.clientWidth / 29.698;
+      this.clientHeight = 560;
+      // console.log(this.pageX)
+      // console.log(this.pageY)
+      // console.log(document.body.clientWidth)
+      // console.log(document.body.clientHeight)
       if (
-        this.pageX >= 4.55 * this.clientWidth &&
-        this.pageX < 5.55 * this.clientWidth &&
+        this.pageX >= 10.4 * this.clientWidth &&
+        this.pageX < 11.4 * this.clientWidth &&
         this.pageY < this.clientHeight
       ) {
-        console.log("1");
+        console.log("双床1");
       } else if (
-        this.pageX >= 5.55 * this.clientWidth &&
-        this.pageX < 6.55 * this.clientWidth &&
+        this.pageX >= 11.4 * this.clientWidth &&
+        this.pageX < 12.4 * this.clientWidth &&
         this.pageY < this.clientHeight
       ) {
-        console.log("2");
+        console.log("双床2");
       } else if (
-        this.pageX >= 6.55 * this.clientWidth &&
-        this.pageX < 7.55 * this.clientWidth &&
+        this.pageX >= 12.4 * this.clientWidth &&
+        this.pageX < 13.4 * this.clientWidth &&
         this.pageY < this.clientHeight
       ) {
-        console.log("3");
+        console.log("双床3");
       } else if (
-        this.pageX >= 7.55 * this.clientWidth &&
-        this.pageX < 8.55 * this.clientWidth &&
+        this.pageX >= 13.4 * this.clientWidth &&
+        this.pageX < 14.4 * this.clientWidth &&
         this.pageY < this.clientHeight
       ) {
-        console.log("4");
+        console.log("双床4");
       } else if (
-        this.pageX >= 8.55 * this.clientWidth &&
-        this.pageX < 9.55 * this.clientWidth &&
+        this.pageX >= 14.4 * this.clientWidth &&
+        this.pageX < 15.4 * this.clientWidth &&
         this.pageY < this.clientHeight
       ) {
-        console.log("5");
+        console.log("双床5");
       } else if (
-        this.pageX >= 9.55 * this.clientWidth &&
-        this.pageX < 10.55 * this.clientWidth &&
+        this.pageX >= 15.4 * this.clientWidth &&
+        this.pageX < 16.4 * this.clientWidth &&
         this.pageY < this.clientHeight
       ) {
-        console.log("6");
+        console.log("双床6");
+      } else if (
+        this.pageX >= 10.4 * this.clientWidth &&
+        this.pageX < 11.4 * this.clientWidth &&
+        this.pageY < this.clientHeight
+      ) {
+        console.log("大床1");
+      } else if (
+        this.pageX >= 11.4 * this.clientWidth &&
+        this.pageX < 12.4 * this.clientWidth &&
+        this.pageY > this.clientHeight
+      ) {
+        console.log("大床2");
+      } else if (
+        this.pageX >= 12.4 * this.clientWidth &&
+        this.pageX < 13.4 * this.clientWidth &&
+        this.pageY > this.clientHeight
+      ) {
+        console.log("大床3");
+      } else if (
+        this.pageX >= 13.4 * this.clientWidth &&
+        this.pageX < 14.4 * this.clientWidth &&
+        this.pageY > this.clientHeight
+      ) {
+        console.log("大床4");
+      } else if (
+        this.pageX >= 14.4 * this.clientWidth &&
+        this.pageX < 15.4 * this.clientWidth &&
+        this.pageY > this.clientHeight
+      ) {
+        console.log("大床5");
+      } else if (
+        this.pageX >= 15.4 * this.clientWidth &&
+        this.pageX < 16.4 * this.clientWidth &&
+        this.pageY > this.clientHeight
+      ) {
+        console.log("大床6");
       } else {
         console.log("aba");
       }
