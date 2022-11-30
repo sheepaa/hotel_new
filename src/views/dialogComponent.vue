@@ -2,11 +2,11 @@
   <el-dialog title="房间平面分布" :visible.sync="detailVisible" width="90%">
     <el-card class="box-card ml-4 mr-4 mb-1 mt-1 transparament">
       <el-button type="warning" disabled class="double1">双1</el-button>
-      <!-- <el-button type="warning">双2</el-button>
-      <el-button type="warning">双3</el-button>
-      <el-button type="warning">双4</el-button>
-      <el-button type="warning">双5</el-button>
-      <el-button type="warning">双6</el-button> -->
+      <el-button type="warning" disabled class="double1">双2</el-button>
+      <el-button type="warning" disabled class="double1">双3</el-button>
+      <el-button type="warning" disabled class="double1">双4</el-button>
+      <el-button type="warning" disabled class="double1">双5</el-button>
+      <el-button type="warning" disabled class="double1">双6</el-button>
       <img :src="pingmiantest" @click="a" alt="" class="imagee" />
       <el-button type="warning">大1</el-button>
       <el-button type="warning">大2</el-button>
@@ -152,6 +152,6 @@ export default {
 
 .double1 {
   position: relative;
-  right: 100px;
+  left: 200px;
 }
 </style>
