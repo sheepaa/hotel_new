@@ -30,7 +30,7 @@
                       placeholder="选择日期"
                       v-model="form.comedate"
                       style="width: 100%"
-                      :options="$datePickerOptions"
+                     
                       value-format="yyyy-MM-dd"
                     ></el-date-picker>
                   </el-form-item>
@@ -42,7 +42,7 @@
                       placeholder="选择日期"
                       v-model="form.leavedate"
                       style="width: 100%"
-                      :options="$datePickerOptions"
+                      
                       value-format="yyyy-MM-dd"
                     ></el-date-picker>
                   </el-form-item>
@@ -251,11 +251,24 @@ export default {
       let yy = new Date().getFullYear();
       let mm = new Date().getMonth() + 1;
       let dd = new Date().getDate();
+      if (String(mm).length == 1){
+        mm = "0" + String(mm);
+      }
+      if (String(dd).length == 1){
+        dd = "0" + String(dd);
+      }
       this.form.comedate = yy + "-" + mm + "-" + dd;
       let tomorrow = new Date(new Date().getTime()+86400000);
       let yyt = tomorrow.getFullYear();
       let mmt = tomorrow.getMonth() + 1;
       let ddt = tomorrow.getDate()
+      if (String(mmt).length == 1){
+        mmt = "0" + String(mmt);
+      }
+
+      if (String(ddt).length == 1){
+        ddt = "0" + String(ddt);
+      }
       this.form.leavedate = yyt + "-" + mmt + "-" + ddt;
     },
     // 保存信息并且跳转到订房
@@ -277,26 +290,26 @@ export default {
   mounted() {
     this.getDate();
 
-    // this.$store.commit("setDate", [this.form.comedate, this.form.leavedate]);
-    // this.$axios
-    //   .post("http://localhost:9091/customer/select4", {
-    //     hotel_name: this.$store.state.hotelName,
-    //     start: this.form.comedate,
-    //     end: this.form.leavedate,
-    //   })
-    //   .then(
-    //     (res) => {
-    //       this.listdata = res.data;
-    //       console.log(res.data)
-    //       console.log(this.listdata)
-    //     },
-    //     (error) => {
-    //       console.log("fail", error);
-    //     }
-    //   )
-    //   .catch((res) => {
-    //     console.log(res);
-    //   });
+    this.$store.commit("setDate", [this.form.comedate, this.form.leavedate]);
+    this.$axios
+      .post("http://localhost:9091/customer/select4", {
+        hotel_name: this.$store.state.hotelName,
+        start: this.form.comedate,
+        end: this.form.leavedate,
+      })
+      .then(
+        (res) => {
+          this.listdata = res.data;
+          console.log(res.data)
+          console.log(this.listdata)
+        },
+        (error) => {
+          console.log("fail", error);
+        }
+      )
+      .catch((res) => {
+        console.log(res);
+      });
   },
 };
 </script>

@@ -15,8 +15,8 @@
               label-width="80px"
               class="demo-ruleForm"
             > -->
-            <el-form label-width="80px">
-              <el-form-item label="客房类型" prop="type" @click="resolveData">
+            <el-form label-width="80px" >
+              <el-form-item label="客房类型">
                 <!-- <el-select v-model="resinfo.type" placeholder="请选择" :disabled="lockCondition">
 									<el-option v-for="item in roomtype" :key="item.id" :label="item.typeName" :value="item.id">
 									</el-option>
@@ -44,7 +44,7 @@
 								</el-col>
 							</el-form-item> -->
 
-              <el-form-item label="入住日期" prop="type" @click="resolveData">
+              <el-form-item label="入住日期" @click="resolveData">
                 <!-- <el-select v-model="resinfo.type" placeholder="请选择" :disabled="lockCondition">
 									<el-option v-for="item in roomtype" :key="item.id" :label="item.typeName" :value="item.id">
 									</el-option>
@@ -55,7 +55,7 @@
                 ></el-form-item>
               </el-form-item>
 
-              <el-form-item label="离店日期" prop="type" @click="resolveData">
+              <el-form-item label="离店日期"  @click="resolveData">
                 <!-- <el-select v-model="resinfo.type" placeholder="请选择" :disabled="lockCondition">
 									<el-option v-for="item in roomtype" :key="item.id" :label="item.typeName" :value="item.id">
 									</el-option>
@@ -79,14 +79,14 @@
               </el-form-item>
 
               <!-- 提供一个房间号码对房间id的映射，即用户选择的是房间号，但存的是房间id -->
-              <el-form-item label="房间号码" prop="id" required>
+              <el-form-item label="房间号码" >
                 <el-select v-model="roomnumber">
                   <el-option v-for="item in roomnumbers" :value="item">
                   </el-option>
                 </el-select>
               </el-form-item>
-
-              <el-form-item label="住店人数" prop="num" required>
+<!-- 
+              <el-form-item label="住店人数" prop="num" >
                 <el-input-number
                   v-model="resinfo.num"
                   :min="1"
@@ -95,13 +95,13 @@
                   :disabled="isNotSelect"
                 ></el-input-number>
                 <span class="ml-1">人</span>
-              </el-form-item>
-              <el-form-item label="提供发票" prop="invoice">
+              </el-form-item> -->
+              <!-- <el-form-item label="提供发票" prop="invoice">
                 <el-switch
                   v-model="resinfo.isNeedInvoice"
                   :disabled="isNotSelect"
                 ></el-switch>
-              </el-form-item>
+              </el-form-item> -->
               <el-form-item label="价格">
                 <!-- <span v-model="resinfo.type" class="room-price">{{sumprice}} 元</span> -->
                 <el-form-item
@@ -112,7 +112,7 @@
                 <el-button
                   type="primary"
                   @click="submitForm('ruleForm')"
-                  :disabled="isNotSelect"
+                
                   >立即预订</el-button
                 >
                 <!-- <el-button @click="resetForm('ruleForm')">重置</el-button> -->
