@@ -1,7 +1,22 @@
 <template>
   <el-dialog title="房间平面分布" :visible.sync="detailVisible" width="90%">
     <el-card class="box-card ml-4 mr-4 mb-1 mt-1 transparament">
+      <el-button type="warning" disabled class="double1">双1</el-button>
+      <!-- <el-button type="warning">双2</el-button>
+      <el-button type="warning">双3</el-button>
+      <el-button type="warning">双4</el-button>
+      <el-button type="warning">双5</el-button>
+      <el-button type="warning">双6</el-button> -->
       <img :src="pingmiantest" @click="a" alt="" class="imagee" />
+      <el-button type="warning">大1</el-button>
+      <el-button type="warning">大2</el-button>
+      <el-button type="warning">大3</el-button>
+      <el-button type="warning">大4</el-button>
+      <el-button type="warning">大5</el-button>
+      <el-button type="warning">大6</el-button>
+      <el-button type="warning">单1</el-button>
+      <el-button type="warning">单2</el-button>
+      <el-button type="warning">单3</el-button>
       <el-button type="success" @click="close">确认</el-button>
       <el-button type="danger" @click="close">取消</el-button>
     </el-card>
@@ -29,10 +44,10 @@ export default {
       this.pageY = e.y; //鼠标点击位置
       this.clientWidth = document.body.clientWidth / 29.698;
       this.clientHeight = 560;
-      // console.log(this.pageX)
-      // console.log(this.pageY)
-      // console.log(document.body.clientWidth)
-      // console.log(document.body.clientHeight)
+      console.log(this.pageX)
+      console.log(this.pageY)
+      console.log(document.body.clientWidth)
+      console.log(document.body.clientHeight)
       if (
         this.pageX >= 10.4 * this.clientWidth &&
         this.pageX < 11.4 * this.clientWidth &&
@@ -116,7 +131,7 @@ export default {
 .imagee {
   height: 18rem;
   display: block;
-  padding: 5rem;
+  padding: 0rem;
   border: 1px solid transparent;
   border-radius: 20px;
   margin: auto;
@@ -133,5 +148,10 @@ export default {
   top: 50%; /*偏移*/
   transform: translateY(50%);
   text-align: center;
+}
+
+.double1 {
+  position: relative;
+  right: 100px;
 }
 </style>

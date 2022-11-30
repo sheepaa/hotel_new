@@ -119,7 +119,7 @@
   }
 
   .login-card {
-    margin: -10rem 50rem 0 50rem;
+    margin-top: -10rem;
     /* background: #ffefa7; */
     background-color: rgba(255, 255, 255, 0.2);
     color: #ffefa7;
