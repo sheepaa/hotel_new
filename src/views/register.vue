@@ -7,24 +7,20 @@
           <div class="text item">
             <p class="register-title">账号注册</p>
             <el-form :model="register" status-icon ref="register" label-width="80px">
-              <el-form-item label="用户名" prop="username">
-                <el-input type="text" v-model="register.username" placeholder="想一个昵称" suffix-icon="el-icon-user"></el-input>
+              <el-form-item label="姓名" prop="customer_name" required>
+                <el-input type="text" v-model="register.customer_name" ></el-input>
               </el-form-item>
-              <el-form-item label="密码" prop="password">
-                <el-input type="password" v-model="register.password" placeholder="想一个密码" suffix-icon="el-icon-lock"></el-input>
+              <el-form-item label="手机号码" prop="phone_number" required>
+                <el-input type="text" v-model="register.phone_number" ></el-input>
               </el-form-item>
-              <el-form-item label="确认密码" prop="confirm">
-                <el-input type="password" v-model="register.confirm" placeholder="确认密码" suffix-icon="el-icon-lock"></el-input>
+              <el-form-item label="身份证号" prop="customer_id_number" required>
+                <el-input type="text" v-model="register.customer_id_number"></el-input>
               </el-form-item>
-              <el-form-item label="手机号码" prop="phone">
-                <el-input type="text" v-model="register.phone" placeholder="输入手机号" suffix-icon="el-icon-mobile-phone"></el-input>
+              <el-form-item label="密码" prop="password" required>
+                <el-input type="password" v-model="register.password" ></el-input>
               </el-form-item>
-              <el-form-item label="邮箱" prop="confirm">
-                <el-input type="email" v-model="register.email" placeholder="输入邮箱" suffix-icon="el-icon-message"></el-input>
-              </el-form-item>
-              <el-form-item label="性别" prop="gender">
-                <el-radio v-model="register.gender" label="1">男</el-radio>
-                <el-radio v-model="register.gender" label="0">女</el-radio>
+              <el-form-item label="确认密码" prop="confirm" required>
+                <el-input type="password" v-model="register.confirm" ></el-input>
               </el-form-item>
             </el-form>
             <el-button :type="btnType" @click="registerBtn('register')" class="registerbtn" :disabled="disabled">
@@ -73,23 +69,27 @@
       };
       return {
         register: {
-          username: '',
+          customer_name: '',
           password: '',
           confirm: '',
-          email: '',
-          phone: '',
-          gender: '',
+          phone_number: '',
+          customer_id_number:''
         },
         iconstyle: 'el-icon-document-checked',
         disabled: false,
         btnType: 'primary',
         isRealRegister: false,
         rules: {
+          customer_name:[{ required: true, message: "请输入姓名", trigger: "change"}],
+          phone_number:[{ required: true, message: "请输入手机号", trigger: "change"}],
+          customer_id_number:[{ required: true, message: "请输入身份证号", trigger: "change"}],
           password: [{
+            required:true,
             validator: validatePass,
             trigger: 'blur'
           }],
           confirm: [{
+            required:true,
             validator: validatePass2,
             trigger: 'blur'
           }],
@@ -108,41 +108,52 @@
         // console.log(this.$refs[register].validate);
         this.$refs[register].validate((valid) => {
           if (valid) {
+            alert("valid")
             console.log(this.register);
           } else {
             console.log("err");
+            alert("error")
             return false;
           }
         })
       },
       registerBtn(register) {
+
         this.$refs[register].validate((valid) => {
           if (valid) {
-            this.iconstyle = "el-icon-loading";
-            this.disabled = true;
-            this.axios.post("http://localhost:8090/user/register", {
-                "email": this.register.email,
-                "userName": this.register.username,
+            alert("valid")
+            // this.iconstyle = "el-icon-loading";
+            // this.disabled = true;
+            this.axios.post("http://localhost:9091/customer/register", {
+
+                "customer_name": this.register.customer_name,
                 "password": this.register.password,
-                "sex": this.register.gender,
-                "phone": this.register.phone
+                "phone_number": this.register.phone_number,
+                "customer_id_number":this.register.customer_id_number
               })
               .then(res => {
-                if (res.status == 200) {
-                  this.iconstyle = "el-icon-check";
-                  this.btnType = "success";
+                console.log(res.data)
+                if (res.data == true) {
+                  console.log("into true")
                   setTimeout(() => {
                     this.disabled = false;
                     this.$router.push("/login");
                   }, 2000);
+                  this.iconstyle = "el-icon-check";
+                  this.btnType = "success";
+                  // setTimeout(() => {
+                  //   this.disabled = false;
+                  //   this.$router.push("/login");
+                  // }, 2000);
                 } else {
-                  this.iconstyle = "el-icon-close";
-                  this.btnType = "danger";
-                  setTimeout(() => {
-                    this.disabled = false;
-                    this.iconstyle = "el-icon-document-checked";
-                    this.btnType = "primary";
-                  }, 2000);
+                  alert("用户已存在")
+                  // this.iconstyle = "el-icon-close";
+                  // this.btnType = "danger";
+                  // setTimeout(() => {
+                  //   this.disabled = false;
+                  //   this.iconstyle = "el-icon-document-checked";
+                  //   this.btnType = "primary";
+                  // }, 2000);
                 }
               })
               .catch(res => {

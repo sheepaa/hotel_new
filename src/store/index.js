@@ -5,15 +5,13 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    userInfo: {
-      customerName:""
 
-    },
     city:"",
     hotelName:"Beijing OOAD hotel DaXing branch",
     //订单模块
     order:{
       // hotelName:state.hotelName,
+      phone_number:"",
       hotelName:"",
       roomType:"",
       start:"",
