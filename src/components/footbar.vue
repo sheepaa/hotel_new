@@ -45,6 +45,7 @@
         this.changeColor();
       },
       findBtn() {
+        console.log("find")
         this.$store.commit('setFind');
         this.changeColor();
       },

@@ -108,7 +108,7 @@
         </el-row>
       </el-main>
       <el-footer class="footer">
-        <footbar></footbar>
+        <footbar ref="footbar"></footbar>
       </el-footer>
       <el-dialog title="提示" :visible.sync="dialogVisible" width="95%">
         <span>您还没有选择完整的时间段！</span>
@@ -265,6 +265,7 @@ export default {
       this.$store.dispatch("SetOrder",[hotel_name, room_type,start,end,price])
       console.log(this.$store.state.order.roomType)
       this.$router.push("/reservation-c");
+      this.$refs.footbar.reservationBtn();
     },
     
   },
