@@ -77,7 +77,9 @@ a {
 
 .btn-block {
   display: block;
-  width: 100%;
+  width: 60%;
+  bottom: 50rem;
+  margin: auto;
 }
 
 .text-left {

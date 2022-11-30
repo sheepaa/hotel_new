@@ -131,11 +131,12 @@
 <style scoped="scoped">
   .mine-bg {
     background: url(../assets/img/mine.jpg);
-    height: 30vh;
-    background-size: 100%;
-    border: 0px solid transparent;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+  background-size: cover;
+  height: 87vh;
+  padding: 20px 20px 40px 20px;
+  border: 0px solid transparent;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
   }
 
   .text {
@@ -147,7 +148,8 @@
   }
 
   .mine-card {
-    margin: -3rem 1rem 1rem 1rem;
+    margin: -40rem 5rem 1rem 5rem;
+    background-color: rgba(255,255,255,0.9);
   }
 
   .avatar {
@@ -179,7 +181,8 @@
 
 
   .mine-card-tool {
-    margin: 1rem;
+    margin: 1rem 5rem 1rem 5rem;
+    background-color: rgba(255,255,255,0.9);
   }
 
   .tool-icon {
