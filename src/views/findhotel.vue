@@ -90,7 +90,7 @@ export default {
           hotel_name: "Beijing OOAD hotel DaXing branch",
           photo: require("../assets/img/Beijing.jpg"),
           intro:
-            "The World Trade Hotel Beijing stands proudly in the heart of Beijing's central business District (CBD), perched on the upper floors of the 81-story World Trade Tower. The hotel is adjacent to the International Trade Mall, with a variety of shops and hundreds of restaurants and bars. Rooms start at 55 square meters and feature floor-to-ceiling Windows that offer panoramic views of the city. Take the elevator to the 64th floor to the front desk of Beijing International Trade Hotel. Step into the hotel lobby, full of modern design style, Western visual tension and Oriental implicit beauty gracefully integrated. Walk in the clouds, feel the world beneath your feet. Located on the 64th-80th floor of the building, the west facing guestrooms and suites offer stunning views of the top of the Forbidden City, 3 kilometers away; The VIP Lounge on the 64th floor serves coffee, tea, soft drinks, juice and refreshments 24/7. The indoor heated infinity pool on the 78th floor features four uniquely designed restaurants, a bar, a lounge and four elegant private dining Spaces.",
+            "The World Trade Hotel Beijing stands proudly in the heart of Beijing's central business District (CBD), perched on the upper floors of the 81-story World Trade Tower. The hotel is adjacent to the International Trade Mall, with a variety of shops and hundreds of restaurants and bars. Rooms start at 55 square meters and feature floor-to-ceiling Windows that offer panoramic views of the city. Take the elevator to the 64th floor to the front desk of Beijing International Trade Hotel. Step into the hotel lobby, full of modern design style, Western visual tension and Oriental implicit beauty gracefully integrated. Walk in the clouds, feel the world beneath your feet. Located on the 64th-80th floor of the building, the west facing guestrooms and suites offer stunning views of the top of the Forbidden City, 3 kilometers away.",
         },
       ],
 
@@ -148,35 +148,10 @@ export default {
 </script>
 
 <style scoped="scoped">
-.amap-demo {
-  width: 80%;
-  height: 600px;
-  margin: auto;
-}
 
 .title {
   font-size: 50px;
   color: rgb(195, 171, 199);
-}
-
-.box-card {
-  height: 30vh;
-  margin: -7rem 1rem 0;
-}
-
-.time {
-  font-size: 13px;
-  color: #999;
-}
-
-.bottom {
-  margin-top: 13px;
-  line-height: 12px;
-}
-
-.button {
-  padding: 0;
-  float: right;
 }
 
 .image {
@@ -185,16 +160,6 @@ export default {
   padding: 0rem;
   border: 1px solid transparent;
   border-radius: 20px;
-}
-
-.clearfix:before,
-.clearfix:after {
-  display: table;
-  content: "";
-}
-
-.clearfix:after {
-  clear: both;
 }
 
 .hotel p {
@@ -214,9 +179,10 @@ export default {
 }
 
 .hotel-card {
-  margin: 0.5rem 4rem 0 4rem;
+  margin: 0.2rem 4rem 0 4rem;
   /* background: #ffefa7; */
   background-color: rgba(255, 255, 255, 0.8);
+  /* border-radius: 1600px; */
   color: #ffefa7;
 }
 
