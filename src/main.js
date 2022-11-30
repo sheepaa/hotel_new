@@ -43,3 +43,4 @@ AMap.initAMapApiLoader({
   // 插件集合 （插件按需引入）
   plugin: ['AMap.Scale', 'AMap.OverView', 'AMap.ToolBar', 'AMap.MapType', 'AMap.PlaceSearch', 'AMap.Geolocation', 'AMap.Geocoder']
 });
+// $env:NODE_OPTIONS="--openssl-legacy-provider"

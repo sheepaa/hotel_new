@@ -31,14 +31,6 @@ const routes = [
     }
   },
   {
-    path: "/test",
-    name: "test",
-    component: () => import('@/views/test.vue'),
-    meta: {
-      title: "测试页"
-    }
-  },
-  {
     path: '/findroom',
     name: 'findroom',
     component: () => import('@/views/findroom.vue'),

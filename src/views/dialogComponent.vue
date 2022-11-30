@@ -1,16 +1,25 @@
 <template>
-  <el-card class="box-card ml-4 mr-4 mb-1 mt-1 transparament">
-    <img :src="pingmiantest" @click="a" alt="" class="imagee" />
-  </el-card>
+    <el-dialog title="房间平面分布" :visible.sync="detailVisible" width="90%">
+        <el-card class="box-card ml-4 mr-4 mb-1 mt-1 transparament">
+            <img :src="pingmiantest" @click="a" alt="" class="imagee" />
+        </el-card>
+    </el-dialog>
+  
 </template>
 <script>
 export default {
+    name: "dialogComponent",
   data() {
     return {
-      pingmiantest: require("@/assets/img/pingmian_final.jpg"),
+        detailVisible:false,
+        pingmiantest: require("@/assets/img/pingmian_final.jpg"),
     };
   },
   methods: {
+    init(data){
+        this.detailVisible=true;
+        console.log(data);
+    },
     a(e) {
       this.pageX = e.x;
       this.pageY = e.y; //鼠标点击位置

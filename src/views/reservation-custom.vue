@@ -69,24 +69,19 @@
               <el-form-item>
                 <el-button
                   :type="searchBtnType"
-                  @click="checkroom"
+                  @click="checkroom()"
                   :disabled="checkBtnDis"
                 >
                   <i :class="searchicon"></i>
                   查询可用房间
                 </el-button>
+                <dialog-component v-if="Visible" ref="dialog"></dialog-component>
               </el-form-item>
 
               <!-- 提供一个房间号码对房间id的映射，即用户选择的是房间号，但存的是房间id -->
               <el-form-item label="房间号码" prop="id" required>
-                <el-select
-                  v-model="roomnumber"
-                >
-              
-                  <el-option
-                    v-for="item in roomnumbers"
-                    :value="item"
-                  >
+                <el-select v-model="roomnumber">
+                  <el-option v-for="item in roomnumbers" :value="item">
                   </el-option>
                 </el-select>
               </el-form-item>
@@ -127,19 +122,6 @@
         </el-card>
         <!--        <el-button type="success" @click="oktest">预订成功测试</el-button>
         <el-button type="danger" @click="failtest">预订失败测试</el-button> -->
-
-        <el-card class="box-card ml-1 mr-1 mb-1 mt-1 transparament">
-          <img :src="pingmian" alt="" class="image" />
-        </el-card>
-
-
-
-
-
-
-
-
-
       </el-main>
       <el-footer class="footer">
         <footbar></footbar>
@@ -159,10 +141,12 @@
 <script>
 import footbar from "@/components/footbar.vue";
 import store from "./../store";
+import dialogComponent from "@/views/dialogComponent.vue";
 export default {
   data() {
     return {
-      pingmian: require('@/assets/img/pingmian_final.jpg'),
+      Visible:false,
+      pingmian: require("@/assets/img/pingmian_final.jpg"),
       resinfo: {
         id: "",
         type: "",
@@ -181,8 +165,8 @@ export default {
       searchBtnType: "primary",
       dialogVisible: false,
 
-      roomnumbers: ["1","2"],
-      roomnumber:"",
+      roomnumbers: ["1", "2"],
+      roomnumber: "",
 
       roomtype: [],
       rules: {
@@ -221,6 +205,7 @@ export default {
   },
   components: {
     footbar,
+    dialogComponent,
   },
   methods: {
     submitForm(formName) {
@@ -263,30 +248,10 @@ export default {
     },
 
     checkroom() {
-      this.checkBtnDis = true;
-      this.searchicon = "el-icon-loading";
-      this.axios
-        .post("http://localhost:8090/user/listRoomsByTypeId", {
-          typeId: this.resinfo.type,
-          inTime: this.changeTimeStr(this.resinfo.indate),
-          leaveTime: this.changeTimeStr(this.resinfo.leavedate),
-        })
-        .then((res) => {
-          this.roomnumber = res.data.data;
-          console.log(this.roomnumber);
-          this.searchicon = "el-icon-check";
-          this.searchBtnType = "success";
-          this.isNotSelect = false;
-          this.lockCondition = true;
-          this.price = this.roomnumber[0].type.price;
-          this.maxp = this.roomnumber[0].maxPeople;
-          this.calcPrice();
-        })
-        .catch(() => {
-          this.searchicon = "el-icon-close";
-          this.searchBtnType = "danger";
-          console.log("error");
-        });
+      this.Visible=true;
+      this.$nextTick(()=>{
+        this.$refs.dialog.init();
+      })
     },
     changeTimeStr(str) {
       str = str.toString();
@@ -329,13 +294,11 @@ export default {
       })
       .then((res) => {
         this.roomnumbers = res.data;
-        console.log(this.roomnumbers)
+        console.log(this.roomnumbers);
       })
       .catch(() => {
         console.log("error");
       });
-      
-      
   },
   computed: {
     fapiao() {
@@ -365,8 +328,8 @@ export default {
 }
 
 .res-form {
-  margin: -70rem 1rem 1rem 1rem;
-  background-color: rgba(255,255,255,0.8);
+  margin: -50rem 1rem 1rem 1rem;
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 /* .el-card__body {
@@ -382,11 +345,25 @@ export default {
   color: #f56c6c;
 }
 .image {
-    height: 17rem;
-		display: block;
-		padding: 5rem;
-		border: 1px solid transparent;
-		border-radius: 20px;
-    margin: auto
-	}
+  height: 17rem;
+  display: block;
+  padding: 5rem;
+  border: 1px solid transparent;
+  border-radius: 20px;
+  margin: auto;
+}
+.imagee {
+  height: 18rem;
+  display: block;
+  padding: 5rem;
+  border: 1px solid transparent;
+  border-radius: 20px;
+  margin: auto;
+}
+.ml-4 {
+  margin-left: 5rem;
+}
+.mr-4 {
+  margin-right: 5rem;
+}
 </style>
