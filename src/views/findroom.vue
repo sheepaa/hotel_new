@@ -261,27 +261,12 @@ export default {
       let room_type = room.room_type;
       let start = this.form.comedate;
       let end = this.form.leavedate;
-      this.$store.commit("setOrder",[hotel_name, room_type,start,end])
+      let price = room.price;
+      this.$store.dispatch("SetOrder",[hotel_name, room_type,start,end,price])
       console.log(this.$store.state.order.roomType)
       this.$router.push("/reservation-c");
     },
-    // unity() {
-    //   this.$axios
-    //     .get("http://localhost:9091/customer/view/1")
-    //     .then(
-    //       (res) => {
-    //         this.listdata = res.data;
-    //         console.log(this.listdata);
-    //         alert("wow");
-    //       },
-    //       (error) => {
-    //         console.log("fail", error);
-    //       }
-    //     )
-    //     .catch((res) => {
-    //       console.log(res);
-    //     });
-    // },
+    
   },
 
   mounted() {

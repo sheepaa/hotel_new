@@ -17,9 +17,11 @@ export default new Vuex.Store({
       hotelName:"",
       roomType:"",
       start:"",
-      end:""
-
-
+      end:"",
+      priceEach:"",
+      priceTotal:"",
+      roomNumber:"",
+      
     },
     position: "findhotel",
     searchSet: {},
@@ -48,14 +50,13 @@ export default new Vuex.Store({
     setHotelName(state,hotelName){
       state.hotelName = hotelName;
     },
-    setOrder(state, [hotel_name, room_type, start, end]){
-      console.log("in setorder")
+    setOrder(state, [hotel_name, room_type, start, end, price, priceTotal]){
       state.order.hotelName = hotel_name;
       state.order.roomType = room_type;
-      console.log(room_type)
-      console.log(state.order.roomType)
       state.order.start = start;
       state.order.end = end;
+      state.order.priceEach = price;
+      state.order.priceTotal = priceTotal;
     },
     setHotelName(state, name){
       state.hotelName = name
@@ -74,6 +75,14 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    //处理priceTotal
+    SetOrder(context, [hotel_name, room_type, start, end, price]){
+      let startDate = new Date(start);
+      let endDate = new Date(end);
+      let diff = (endDate.getTime() - startDate.getTime())/86400000;
+      let priceTotal = Number(price) * diff;
+      context.commit("setOrder",[hotel_name, room_type, start, end, price, priceTotal]);
+    }
   },
   modules: {
   }

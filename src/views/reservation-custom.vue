@@ -15,15 +15,8 @@
               label-width="80px"
               class="demo-ruleForm"
             > -->
-			<el-form
-              label-width="80px"
-             
-            >
-              <el-form-item
-                label="客房类型"
-                prop="type"
-                @click="resolveData"
-              >
+            <el-form label-width="80px">
+              <el-form-item label="客房类型" prop="type" @click="resolveData">
                 <!-- <el-select v-model="resinfo.type" placeholder="请选择" :disabled="lockCondition">
 									<el-option v-for="item in roomtype" :key="item.id" :label="item.typeName" :value="item.id">
 									</el-option>
@@ -51,28 +44,26 @@
 								</el-col>
 							</el-form-item> -->
 
-              <el-form-item
-                label="入住日期"
-                prop="type"
-                @click="resolveData"
-              >
+              <el-form-item label="入住日期" prop="type" @click="resolveData">
                 <!-- <el-select v-model="resinfo.type" placeholder="请选择" :disabled="lockCondition">
 									<el-option v-for="item in roomtype" :key="item.id" :label="item.typeName" :value="item.id">
 									</el-option>
 								</el-select> -->
-                <el-form-item :label="$store.state.order.start" label-width="auto"></el-form-item>
+                <el-form-item
+                  :label="$store.state.order.start"
+                  label-width="auto"
+                ></el-form-item>
               </el-form-item>
 
-              <el-form-item
-                label="离店日期"
-                prop="type"
-                @click="resolveData"
-              >
+              <el-form-item label="离店日期" prop="type" @click="resolveData">
                 <!-- <el-select v-model="resinfo.type" placeholder="请选择" :disabled="lockCondition">
 									<el-option v-for="item in roomtype" :key="item.id" :label="item.typeName" :value="item.id">
 									</el-option>
 								</el-select> -->
-                <el-form-item :label="$store.state.order.end" label-width="auto"></el-form-item>
+                <el-form-item
+                  :label="$store.state.order.end"
+                  label-width="auto"
+                ></el-form-item>
               </el-form-item>
 
               <el-form-item>
@@ -89,15 +80,12 @@
               <!-- 提供一个房间号码对房间id的映射，即用户选择的是房间号，但存的是房间id -->
               <el-form-item label="房间号码" prop="id" required>
                 <el-select
-                  v-model="resinfo.id"
-                  placeholder="请先选择房间类型"
-                  :disabled="isNotSelect"
+                  v-model="roomnumber"
                 >
+              
                   <el-option
-                    v-for="item in roomnumber"
-                    :key="item.id"
-                    :label="item.number"
-                    :value="item.id"
+                    v-for="item in roomnumbers"
+                    :value="item"
                   >
                   </el-option>
                 </el-select>
@@ -121,6 +109,9 @@
               </el-form-item>
               <el-form-item label="价格">
                 <!-- <span v-model="resinfo.type" class="room-price">{{sumprice}} 元</span> -->
+                <el-form-item
+                  :label="$store.state.order.priceTotal"
+                ></el-form-item>
               </el-form-item>
               <el-form-item>
                 <el-button
@@ -129,7 +120,7 @@
                   :disabled="isNotSelect"
                   >立即预订</el-button
                 >
-                <el-button @click="resetForm('ruleForm')">重置</el-button>
+                <!-- <el-button @click="resetForm('ruleForm')">重置</el-button> -->
               </el-form-item>
             </el-form>
           </div>
@@ -154,13 +145,13 @@
         <footbar></footbar>
       </el-footer>
 
-      <el-dialog title="提示" :visible.sync="dialogVisible" width="95%">
+      <!-- <el-dialog title="提示" :visible.sync="dialogVisible" width="95%">
         <span>你确定要提交预订单吗？</span>
         <span slot="footer" class="dialog-footer">
           <el-button @click="dialogVisible = false">取消</el-button>
           <el-button type="primary" @click="confirmSubmitForm">确定</el-button>
         </span>
-      </el-dialog>
+      </el-dialog> -->
     </el-container>
   </div>
 </template>
@@ -189,7 +180,10 @@ export default {
       searchicon: "el-icon-search",
       searchBtnType: "primary",
       dialogVisible: false,
-      roomnumber: [],
+
+      roomnumbers: ["1","2"],
+      roomnumber:"",
+
       roomtype: [],
       rules: {
         type: [
@@ -267,18 +261,7 @@ export default {
           this.$router.push("/submitfail");
         });
     },
-    resolveData() {
-      // console.log(123123);
-      this.axios
-        .get("http://localhost:8090/user/listTypes")
-        .then((res) => {
-          this.roomtype = res.data.data;
-          // console.log(this.roomtype);
-        })
-        .catch(() => {
-          console.log("死了");
-        });
-    },
+
     checkroom() {
       this.checkBtnDis = true;
       this.searchicon = "el-icon-loading";
@@ -336,7 +319,23 @@ export default {
     },
   },
   mounted() {
-    this.resolveData();
+    //获取 roomnumber
+    this.axios
+      .post("http://localhost:9091/customer/select1", {
+        hotel_name: this.$store.state.order.hotelName,
+        room_type: this.$store.state.order.roomType,
+        start: this.$store.state.order.start,
+        end: this.$store.state.order.end,
+      })
+      .then((res) => {
+        this.roomnumbers = res.data;
+        console.log(this.roomnumbers)
+      })
+      .catch(() => {
+        console.log("error");
+      });
+      
+      
   },
   computed: {
     fapiao() {
