@@ -2,16 +2,15 @@
   <div>
     <el-container class="wrapper">
       <el-main class="section text-center">
-        <div class="contact-bg"></div>
         <el-card class="box-card contact-card">
           <div class="text item">
             <p class="contact-title">联系我们</p>
-            <div class="contact-info text-left">
-              <p class="contact-eng">DaXueCheng Hotel, Inc</p>
-              <p>山东省济南市长清区紫薇路2333号</p>
-              <p>长清大学城星级宾馆</p>
-              <p>Tel：0538-12345678</p>
-              <p>Fax：0538-87654321</p>
+            <div class="contact-info text-centre">
+              <p class="contact-eng">Very goooooooood Hotel, Inc</p>
+              <p>广东省深圳市南山区学苑大道1088号</p>
+              <p>南方科技大学OOAD开发小组</p>
+              <p>Tel：121-1865-4236</p>
+              <p>Fax：84159</p>
             </div>
             <p class="contact-subtitle">服务评价</p>
             <span>为我们的服务打个分吧~</span>
@@ -29,9 +28,6 @@
         </el-card>
       </el-main>
     </el-container>
-    <el-footer class="footer text-center">
-      <footbar></footbar>
-    </el-footer>
   </div>
 </template>
 
@@ -96,15 +92,6 @@
 </script>
 
 <style scoped="scoped">
-  .contact-bg {
-    background: rgb(247, 160, 30);
-    height: 20vh;
-    background-size: 100%;
-    border: 0px solid transparent;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-  }
-
   .text {
     font-size: 14px;
   }
@@ -114,7 +101,7 @@
   }
 
   .contact-card {
-    margin: -5rem 1rem 1rem 1rem;
+    margin: 2rem 1rem 1rem 1rem;
   }
 
   .contact-title {
@@ -163,6 +150,7 @@
   }
 
   .contact-subtitle {
+    margin-top: 8rem;
     font-size: 1.5rem;
     font-weight: lighter;
   }

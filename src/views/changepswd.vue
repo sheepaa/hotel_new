@@ -2,7 +2,6 @@
   <div>
     <el-container class="wrapper">
       <el-main class="section text-center">
-        <div class="changepswd-bg"></div>
         <el-card class="box-card changepswd-card">
           <div class="text item">
             <p class="changepswd-title">修改密码</p>
@@ -25,9 +24,6 @@
         </el-card>
       </el-main>
     </el-container>
-    <el-footer class="footer text-center">
-      <footbar></footbar>
-    </el-footer>
   </div>
 </template>
 
@@ -88,14 +84,6 @@
 </script>
 
 <style scoped="scoped">
-  .changepswd-bg {
-    background: rgb(247, 160, 30);
-    height: 20vh;
-    background-size: 100%;
-    border: 0px solid transparent;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-  }
   
   .text {
     font-size: 14px;
@@ -106,7 +94,7 @@
   }
   
   .changepswd-card {
-    margin: -5rem 1rem 1rem 1rem;
+    margin: 9rem 9rem 1rem 9rem;
   }
   
   .changepswd-title {

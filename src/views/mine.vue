@@ -44,7 +44,7 @@
                     <i class="el-icon-setting password"></i>
                   </p>
                   <p class="tool-text">
-                    密码设置
+                    设置
                   </p>
                 </router-link>
               </el-col>

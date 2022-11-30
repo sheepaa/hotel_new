@@ -2,7 +2,6 @@
   <div>
     <el-container class="wrapper">
       <el-main class="section">
-        <div class="changeinfo-bg"></div>
         <el-card class="box-card changeinfo-card">
           <div class="text item">
             <p class="changeinfo-title">查看个人信息</p>
@@ -95,9 +94,6 @@
         </el-card>
       </el-main>
     </el-container>
-    <el-footer class="footer text-center">
-      <footbar></footbar>
-    </el-footer>
   </div>
 </template>
 
@@ -143,14 +139,6 @@
 </script>
 
 <style scoped="scoped">
-  .changeinfo-bg {
-    background: rgb(247, 160, 30);
-    height: 20vh;
-    background-size: 100%;
-    border: 0px solid transparent;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-  }
   
   .text {
     font-size: 14px;
@@ -161,7 +149,7 @@
   }
   
   .changeinfo-card {
-    margin: -5rem 1rem 1rem 1rem;
+    margin: 2rem 5rem 1rem 5rem;
   }
   
   .changeinfo-title {
