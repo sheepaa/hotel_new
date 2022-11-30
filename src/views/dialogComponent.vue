@@ -1,34 +1,38 @@
 <template>
-    <el-dialog title="房间平面分布" :visible.sync="detailVisible" width="90%">
-        <el-card class="box-card ml-4 mr-4 mb-1 mt-1 transparament">
-            <img :src="pingmiantest" @click="a" alt="" class="imagee" />
-        </el-card>
-    </el-dialog>
-  
+  <el-dialog title="房间平面分布" :visible.sync="detailVisible" width="90%">
+    <el-card class="box-card ml-4 mr-4 mb-1 mt-1 transparament">
+      <img :src="pingmiantest" @click="a" alt="" class="imagee" />
+      <el-button type="success" @click="close">确认</el-button>
+      <el-button type="danger" @click="close">取消</el-button>
+    </el-card>
+  </el-dialog>
 </template>
 <script>
 export default {
-    name: "dialogComponent",
+  name: "dialogComponent",
   data() {
     return {
-        detailVisible:false,
-        pingmiantest: require("@/assets/img/pingmian_final.jpg"),
+      detailVisible: false,
+      pingmiantest: require("@/assets/img/pingmian_final.jpg"),
     };
   },
   methods: {
-    init(data){
-        this.detailVisible=true;
-        console.log(data);
+    init() {
+      this.detailVisible = true;
+      console.log("123");
+    },
+    close() {
+      this.detailVisible = false;
     },
     a(e) {
       this.pageX = e.x;
       this.pageY = e.y; //鼠标点击位置
       this.clientWidth = document.body.clientWidth / 17.978;
       this.clientHeight = document.body.clientHeight / 3;
-      // console.log(this.pageX)
-      // console.log(this.pageY)
-      // console.log(document.body.clientWidth)
-      // console.log(document.body.clientHeight)
+      console.log(this.pageX)
+      console.log(this.pageY)
+      console.log(document.body.clientWidth)
+      console.log(document.body.clientHeight)
       if (
         this.pageX >= 4.55 * this.clientWidth &&
         this.pageX < 5.55 * this.clientWidth &&
@@ -86,5 +90,12 @@ export default {
 }
 .mr-4 {
   margin-right: 5rem;
+}
+
+.center {
+  position: relative;
+  top: 50%; /*偏移*/
+  transform: translateY(50%);
+  text-align: center;
 }
 </style>
