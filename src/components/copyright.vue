@@ -2,7 +2,7 @@
   <el-row>
     <el-col :span="24">
       <p>OOAD</p>
-      <p>Java Web应用开发课程设计</p>
+      <p>Group Project B</p>
     </el-col>
   </el-row>
 </template>

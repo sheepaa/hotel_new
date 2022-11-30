@@ -2,25 +2,25 @@
   <div>
     <el-container class="wrapper">
       <el-main class="section text-center">
-        <div class="register-bg"></div>
+        <div class="bg-login"></div>
         <el-card class="box-card register-card">
           <div class="text item">
             <p class="register-title">账号注册</p>
             <el-form :model="register" status-icon ref="register" label-width="80px">
               <el-form-item label="用户名" prop="username">
-                <el-input type="text" v-model="register.username" suffix-icon="el-icon-user"></el-input>
+                <el-input type="text" v-model="register.username" placeholder="想一个昵称" suffix-icon="el-icon-user"></el-input>
               </el-form-item>
               <el-form-item label="密码" prop="password">
-                <el-input type="password" v-model="register.password" suffix-icon="el-icon-lock"></el-input>
+                <el-input type="password" v-model="register.password" placeholder="想一个密码" suffix-icon="el-icon-lock"></el-input>
               </el-form-item>
               <el-form-item label="确认密码" prop="confirm">
-                <el-input type="password" v-model="register.confirm" suffix-icon="el-icon-lock"></el-input>
+                <el-input type="password" v-model="register.confirm" placeholder="确认密码" suffix-icon="el-icon-lock"></el-input>
               </el-form-item>
               <el-form-item label="手机号码" prop="phone">
-                <el-input type="text" v-model="register.phone" suffix-icon="el-icon-mobile-phone"></el-input>
+                <el-input type="text" v-model="register.phone" placeholder="输入手机号" suffix-icon="el-icon-mobile-phone"></el-input>
               </el-form-item>
               <el-form-item label="邮箱" prop="confirm">
-                <el-input type="email" v-model="register.email" suffix-icon="el-icon-message"></el-input>
+                <el-input type="email" v-model="register.email" placeholder="输入邮箱" suffix-icon="el-icon-message"></el-input>
               </el-form-item>
               <el-form-item label="性别" prop="gender">
                 <el-radio v-model="register.gender" label="1">男</el-radio>
@@ -173,15 +173,6 @@
 </script>
 
 <style scoped="scoped">
-  .register-bg {
-    background: rgb(247, 160, 30);
-    height: 20vh;
-    background-size: 100%;
-    border: 0px solid transparent;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-  }
-
   .text {
     font-size: 14px;
   }
@@ -191,7 +182,13 @@
   }
 
   .register-card {
-    margin: -5rem 1rem 1rem 1rem;
+    /* margin: -5rem 1rem 1rem 1rem; */
+    width: 40%;
+    margin: auto;
+    margin-top: -40rem;
+    /* background: #ffefa7; */
+    background-color: rgba(194, 167, 255, 0.8);
+    color: #ffefa7;
   }
 
   .register-title {
