@@ -124,6 +124,10 @@ a {
   width: 10rem;
 }
 
+.transparament {
+  background-color: rgba(255,255,255,0.9);
+}
+
 .text-plain {
   color: #303133;
 }

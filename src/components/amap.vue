@@ -91,8 +91,8 @@ export default {
 
 <style scoped>
 #map-demo {
-  width: 70rem;
-  height: 46rem;
+  width: 45rem;
+  height: 26rem;
   margin: auto;
   border: 1rem solid blueviolet;
   border-radius: 1em;

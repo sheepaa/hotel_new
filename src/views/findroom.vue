@@ -315,7 +315,7 @@ export default {
 .box-card {
   height: 30vh;
   margin: -40rem 1rem 0;
-  background: rgba(255,255,255,0.7)
+  background: rgba(255,255,255,0.85)
 }
 
 .time {

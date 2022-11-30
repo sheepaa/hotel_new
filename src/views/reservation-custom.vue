@@ -137,7 +137,7 @@
         <!--        <el-button type="success" @click="oktest">预订成功测试</el-button>
         <el-button type="danger" @click="failtest">预订失败测试</el-button> -->
 
-        <el-card class="box-card ml-1 mr-1 mb-1 mt-1">
+        <el-card class="box-card ml-1 mr-1 mb-1 mt-1 transparament">
           <img :src="pingmian" alt="" class="image" />
         </el-card>
 
@@ -383,7 +383,7 @@ export default {
   color: #f56c6c;
 }
 .image {
-    height: 30rem;
+    height: 17rem;
 		display: block;
 		padding: 5rem;
 		border: 1px solid transparent;
