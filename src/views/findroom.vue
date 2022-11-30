@@ -218,11 +218,15 @@ export default {
     //   this.roomVisible = true;
     // },
     searchBtn() {
-      console.log(this.changeTimeStr(this.form.comedate));
+      // console.log(this.changeTimeStr(this.form.comedate));
       if (this.form.comedate == "" || this.form.leavedate == "") {
         this.dialogVisible = true;
         return;
       }
+      console.log("into")
+      console.log(this.form.comedate)
+      console.log(this.form.leavedate)
+      console.log("aba")
       this.$store.commit("setDate", [this.form.comedate, this.form.leavedate]);
 
       this.$axios
@@ -273,26 +277,26 @@ export default {
   mounted() {
     this.getDate();
 
-    this.$store.commit("setDate", [this.form.comedate, this.form.leavedate]);
-    this.$axios
-      .post("http://localhost:9091/customer/select4", {
-        hotel_name: this.$store.state.hotelName,
-        start: this.form.comedate,
-        end: this.form.leavedate,
-      })
-      .then(
-        (res) => {
-          this.listdata = res.data;
-          console.log(res.data)
-          console.log(this.listdata)
-        },
-        (error) => {
-          console.log("fail", error);
-        }
-      )
-      .catch((res) => {
-        console.log(res);
-      });
+    // this.$store.commit("setDate", [this.form.comedate, this.form.leavedate]);
+    // this.$axios
+    //   .post("http://localhost:9091/customer/select4", {
+    //     hotel_name: this.$store.state.hotelName,
+    //     start: this.form.comedate,
+    //     end: this.form.leavedate,
+    //   })
+    //   .then(
+    //     (res) => {
+    //       this.listdata = res.data;
+    //       console.log(res.data)
+    //       console.log(this.listdata)
+    //     },
+    //     (error) => {
+    //       console.log("fail", error);
+    //     }
+    //   )
+    //   .catch((res) => {
+    //     console.log(res);
+    //   });
   },
 };
 </script>
