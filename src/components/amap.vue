@@ -14,7 +14,7 @@ export default {
       // name:'测试',
       map: null,
       infoWindow: null,
-      closeImg: require("@/assets/close.png"),
+      // closeImg: require("@/assets/close.png"),
       pointList: [
         { address: "广州", local: [113, 23] },
         { address: "北京", local: [116.33333, 39.98] },
@@ -60,7 +60,7 @@ export default {
       //实例化信息窗体
       this.infoWindow = new AMap.InfoWindow({
         isCustom: true, //使用自定义窗体
-        content: self.winInfo,
+        content: <div>self.winInfo</div>,
         offset: new AMap.Pixel(15, -35),
       });
       this.map.setFitView();

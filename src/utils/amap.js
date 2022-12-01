@@ -1,28 +1,28 @@
-function createInfoWindow(title, content,callback) {
+function createInfoWindow(title, content, callback) {
     var info = document.createElement("div");
     info.className = "custom-info input-card content-window-card";
-
     //可以通过下面的方式修改自定义窗体的宽高
     info.style.width = "130px";
     // 定义顶部标题
     var top = document.createElement("div");
     // var titleD = document.createElement("div");
-    var closeX = document.createElement("img");
+    // var closeX = document.createElement("img");
 
     top.className = "info-top";
     
-    closeX.src = require("@/assets/img/close.png");
-    closeX.onclick = callback;
+    // closeX.src = require("@/assets/close.png");
+    // closeX.onclick = callback;
 
     // top.appendChild(titleD);
     top.innerHTML = title;
-    top.appendChild(closeX);
+    top.onclick = callback;
+    // top.appendChild(closeX);
     info.appendChild(top);
 
     // 定义中部内容
     var middle = document.createElement("div");
     middle.className = "info-middle";
-    middle.style.backgroundColor = "white";
+    middle.style.backgroundColor = "light-blue";
     middle.innerHTML = content;
     info.appendChild(middle);
 
