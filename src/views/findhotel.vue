@@ -36,8 +36,16 @@
                 </div>
               </el-col>
               <el-col :span="4" class="enter">
+                <el-row>
                 <el-button @click="toFindRoom(hotel)" type="primary"  size="medium">Enter</el-button>
                 <el-button @click="showcomments()" type="primary"  size="medium">Comments</el-button>
+                </el-row>
+                <el-row class="mt-1">
+                  <p class="tool-icon" @click="cli">
+                    <i v-if="isChecked" class="el-icon-star-off info"></i>
+                    <i v-else class="el-icon-star-on info"></i>
+                  </p>
+                </el-row>
                 <!-- <dialog-component v-if="Visible1" ref="dialog_comment" ></dialog-component> -->
               </el-col>
             </el-row>
@@ -59,6 +67,7 @@ export default {
   data() {
     const self = this;
     return {
+      isChecked: true,
       Visible1:false,
       listdata: [
         {
@@ -135,6 +144,13 @@ export default {
     comments,
   },
   methods: {
+    cli() {
+      if(this.isChecked){
+        this.isChecked = false
+      }else{
+        this.isChecked = true
+      }
+    },
     toFindRoom(hotel) {
       this.$store.commit("setHotelName", hotel.hotel_name);
       this.$router.push("/findroom");
@@ -162,7 +178,10 @@ export default {
 </script>
 
 <style scoped="scoped">
-
+.tool-icon {
+    font-size: 2rem;
+    margin: 0.5rem 0;
+  } 
 .title {
   font-size: 60px;
   font-family: fang;
@@ -171,7 +190,7 @@ export default {
 }
 
 .image {
-  width: 50%;
+  width: 65%;
   display: block;
   padding: 0rem;
   border: 1px solid transparent;
@@ -210,4 +229,8 @@ export default {
   position: relative;
   top:5rem;
 }
+
+.info {
+    color: rgb(247, 160, 30);
+  }
 </style>
