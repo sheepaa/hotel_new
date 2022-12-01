@@ -12,7 +12,7 @@
             </el-row>
             <el-row class="mt-1">
               <el-col :span="6" class="text-right">
-                <img src="../assets/img/lk.jpg" class="avatar" />
+                <img src="../assets/img/200.jpg" class="avatar" />
               </el-col>
               <el-col :span="18">
                 <p class="userid text-left">200无条件抵用券</p>
@@ -20,9 +20,9 @@
                 <el-button type="primary" @click="dialogVisible = true"><i class="el-icon-discount"></i> 兑换</el-button>
               </el-col>
             </el-row>
-            <el-row class="mt-1">
+            <el-row class="mt-5">
               <el-col :span="6" class="text-right">
-                <img src="../assets/img/lk.jpg" class="avatar" />
+                <img src="../assets/img/breakfast.jpg" class="avatar" />
               </el-col>
               <el-col :span="18">
                 <p class="userid text-left">早餐券</p>
@@ -30,9 +30,9 @@
                 <el-button type="primary" @click="dialogVisible = true"><i class="el-icon-discount"></i> 兑换</el-button>
               </el-col>
             </el-row>
-            <el-row class="mt-1">
+            <el-row class="mt-5">
               <el-col :span="6" class="text-right">
-                <img src="../assets/img/lk.jpg" class="avatar" />
+                <img src="../assets/img/hotelmodel.jpg" class="avatar" />
               </el-col>
               <el-col :span="18">
                 <p class="userid text-left">酒店纪念模型</p>
@@ -40,7 +40,7 @@
                 <el-button type="primary" @click="dialogVisible = true"><i class="el-icon-discount"></i> 兑换</el-button>
               </el-col>
             </el-row>
-            <el-button @click="back">返回</el-button>
+            <el-button @click="back"  class="mt-5">返回</el-button>
           </div>
           <el-dialog title="退出" :visible.sync="dialogVisible" width="30%">
             <span>你确定要兑换该件商品吗？</span>
@@ -131,6 +131,9 @@ export default {
   max-height: 94vh;
 }
 
+.mt-5 {
+  margin-top: 5rem;
+}
 #app {
   overflow: hidden;
 }
