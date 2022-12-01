@@ -38,7 +38,7 @@
               </el-col>
               <el-col :span="4">
                 <el-button @click="dialogVisible = true" :disabled="false" type="text" class="order-back">评价</el-button>
-                <el-button @click="changeorder = true" :disabled="false" type="text" class="order-back">修改订单</el-button>
+                <el-button @click="changeVisible = true" :disabled="false" type="text" class="order-back">修改订单</el-button>
               </el-col>
             </el-row>
             <el-dialog title="评价" :visible.sync="dialogVisible" width="80%">
@@ -81,8 +81,8 @@
         dialogVisible: false,
         changeVisible: false,
         contact: {
-          comment: '',
-          eva: null,
+          comment: '', // 评论
+          eva: null, // 评分
         },
         iconstyle: 'el-icon-document-checked',
         disabled: false,
@@ -90,9 +90,15 @@
         isRealcontact: false,
         colors: ['#99A9BF', '#F7BA2A', '#FF9900'],
         btnText: '提交反馈',
-        orderdata: {
-          
-        },
+        orderdata: [{
+          id:"1",
+          hotel_name:"ababab",
+          room_type:"oweiryhwk",
+          room_number:"1001",
+          start:"10-10",
+          end:"10-11",
+          price:"101",
+        }],
         length: '',
       }
     },
@@ -107,7 +113,7 @@
         console.log(this.contact);
         this.disabled = true;
         this.iconstyle = "el-icon-loading";
-        this.axios.post("http://localhost:8090/user/publishComment", {
+        this.axios.post("http://localhost:9091/user/publishComment", {
           "information": this.contact.comment,
           "type": this.contact.eva,
         })
