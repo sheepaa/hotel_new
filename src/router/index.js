@@ -143,6 +143,14 @@ const routes = [
     },
   },
   {
+    path: '/comments',
+    name: 'comments',
+    component: () => import('@/views/comments.vue'),
+    meta: {
+      title: "评论"
+    },
+  },
+  {
     path: '/shou',
     name: 'shou',
     component: () => import('@/views/shou.vue'),

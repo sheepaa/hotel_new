@@ -36,7 +36,9 @@
                 </div>
               </el-col>
               <el-col :span="4" class="enter">
-                <el-button @click="toFindRoom(hotel)" type="primary" round size="medium">Enter</el-button>
+                <el-button @click="toFindRoom(hotel)" type="primary"  size="medium">Enter</el-button>
+                <el-button @click="showcomments()" type="primary"  size="medium">Comments</el-button>
+                <!-- <dialog-component v-if="Visible1" ref="dialog_comment" ></dialog-component> -->
               </el-col>
             </el-row>
           </el-card>
@@ -52,10 +54,12 @@
 <script>
 import footbar from "@/components/footbar.vue";
 import amap from "../components/amap.vue";
+import comments from "@/views/comments.vue";
 export default {
   data() {
     const self = this;
     return {
+      Visible1:false,
       listdata: [
         {
           hotel_location: "香港",
@@ -128,6 +132,7 @@ export default {
   components: {
     footbar,
     amap,
+    comments,
   },
   methods: {
     toFindRoom(hotel) {
@@ -136,8 +141,23 @@ export default {
       this.$refs.footbar.findBtn();
       console.log("ok");
     },
+    showcomments(){
+      // console.log("qwert")
+      // this.Visible1=true;
+      // this.$nextTick(()=>{
+      //   console.log("nexttick")
+      //   this.$refs.dialog_comment.init();
+      //   console.log("bmw")
+      // })
+      
+      this.$router.push("/comments");
+    }
   },
-  mounted() {},
+  components: {
+    amap,
+    comments,
+    footbar
+  }
 };
 </script>
 
