@@ -30,7 +30,6 @@
                       placeholder="选择日期"
                       v-model="form.comedate"
                       style="width: 100%"
-                     
                       value-format="yyyy-MM-dd"
                     ></el-date-picker>
                   </el-form-item>
@@ -42,7 +41,6 @@
                       placeholder="选择日期"
                       v-model="form.leavedate"
                       style="width: 100%"
-                      
                       value-format="yyyy-MM-dd"
                     ></el-date-picker>
                   </el-form-item>
@@ -81,8 +79,18 @@
                     <p class="room-title">
                       {{ room.room_type }}
                     </p>
-                    <!-- <p class="room-intro">{{ room.intro }}</p> -->
-                    <p class="room-price">￥{{ room.price }}</p>
+
+                    <p class="room-price" v-if="(room.price_final === room.price_initial)">￥{{ room.price_initial }}</p>
+
+                    <p v-else>
+                      <span style="color: firebrick; font-size: 25px"
+                        >￥{{room.price_final}}</span
+                      >
+                      <span
+                        style="text-decoration: line-through; font-size: 12px"
+                        >¥{{ room.price_initial }}</span
+                      >
+                    </p>
                   </div>
                 </el-col>
                 <el-col :span="8" style="margin-bottom: 5px">
@@ -134,8 +142,8 @@
           <el-col :span="8">Window:{{ displayInfo.Window }}</el-col>
           <el-col :span="8">Smoking:{{ displayInfo.Smoking }}</el-col>
         </el-row> -->
-        <el-row  v-for="(item, index) in displayInfo">
-           {{item}}
+        <el-row v-for="(item, index) in displayInfo">
+          {{ item }}
         </el-row>
 
         <span slot="footer" class="dialog-footer">
@@ -159,7 +167,7 @@ export default {
       // hotel_name = this.$route.query.
       dialogVisible: false,
       dialogVisibleInfo: false, //查看详情
-    
+
       displayInfo: {
         Square: "",
         Floor: "",
@@ -204,13 +212,11 @@ export default {
     footbar,
   },
 
-  
   methods: {
-    
     clickDisplayInfo(room) {
-      console.log(room)
+      console.log(room);
       console.log(room.intro);
-      
+
       this.dialogVisibleInfo = true;
       // console.log("we")
       this.displayInfo = room.intro;
@@ -220,28 +226,19 @@ export default {
     //   this.roomVisible = true;
     // },
 
-
-    searchBtn(){
+    searchBtn() {
       alert("fdsfdsfd"),
+        // this.$axios.post("http://localhost:9091/customer/aaa",params),
+        this.$ajax.post("", { te: "uuuu" }).then();
 
-// this.$axios.post("http://localhost:9091/customer/aaa",params),
-this.$ajax.post("",{te:'uuuu'}).then();
-
-alert("yyyyy")
-
-      
-
-
-  }
-
-,
+      alert("yyyyy");
+    },
 
     // searchBtn(param) {
     //   alert("dd")
-      
+
     //   this.$axios.post("/customer/aaa",param)
     //   alert("ee")
-
 
     //   // console.log(this.changeTimeStr(this.form.comedate));
     //   // if (this.form.comedate == "" || this.form.leavedate == "") {
@@ -276,40 +273,45 @@ alert("yyyyy")
       let yy = new Date().getFullYear();
       let mm = new Date().getMonth() + 1;
       let dd = new Date().getDate();
-      if (String(mm).length == 1){
+      if (String(mm).length == 1) {
         mm = "0" + String(mm);
       }
-      if (String(dd).length == 1){
+      if (String(dd).length == 1) {
         dd = "0" + String(dd);
       }
       this.form.comedate = yy + "-" + mm + "-" + dd;
-      let tomorrow = new Date(new Date().getTime()+86400000);
+      let tomorrow = new Date(new Date().getTime() + 86400000);
       let yyt = tomorrow.getFullYear();
       let mmt = tomorrow.getMonth() + 1;
-      let ddt = tomorrow.getDate()
-      if (String(mmt).length == 1){
+      let ddt = tomorrow.getDate();
+      if (String(mmt).length == 1) {
         mmt = "0" + String(mmt);
       }
 
-      if (String(ddt).length == 1){
+      if (String(ddt).length == 1) {
         ddt = "0" + String(ddt);
       }
       this.form.leavedate = yyt + "-" + mmt + "-" + ddt;
     },
     // 保存信息并且跳转到订房
     toOrder(room) {
-      console.log("in")
+      console.log("in");
       let hotel_name = this.$store.state.hotelName;
       let room_type = room.room_type;
       let start = this.form.comedate;
       let end = this.form.leavedate;
-      let price = room.price;
-      this.$store.dispatch("SetOrder",[hotel_name, room_type,start,end,price])
-      console.log(this.$store.state.order.roomType)
+      let price = room.price_final;
+      this.$store.dispatch("SetOrder", [
+        hotel_name,
+        room_type,
+        start,
+        end,
+        price,
+      ]);
+      console.log(this.$store.state.order.roomType);
       this.$router.push("/reservation-c");
       this.$refs.footbar.reservationBtn();
     },
-    
   },
 
   mounted() {
@@ -325,8 +327,8 @@ alert("yyyyy")
       .then(
         (res) => {
           this.listdata = res.data;
-          console.log(res.data)
-          console.log(this.listdata)
+          console.log(res.data);
+          console.log(this.listdata);
         },
         (error) => {
           console.log("fail", error);
@@ -343,7 +345,7 @@ alert("yyyyy")
 .box-card {
   height: 30vh;
   margin: -40rem 1rem 0;
-  background: rgba(255,255,255,0.85)
+  background: rgba(255, 255, 255, 0.85);
 }
 
 .time {
@@ -410,6 +412,6 @@ alert("yyyyy")
 }
 
 .transparent {
-  background: rgba(255,255,255,0.8)
+  background: rgba(255, 255, 255, 0.8);
 }
 </style>
