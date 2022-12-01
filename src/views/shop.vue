@@ -42,13 +42,11 @@
             </el-row>
             <el-button @click="back" type="danger" class="mt-5">返回</el-button>
           </div>
-          <el-dialog title="退出" :visible.sync="dialogVisible" width="30%">
+          <el-dialog title="兑换确认" :visible.sync="dialogVisible" width="30%">
             <span>你确定要兑换该件商品吗？</span>
             <span slot="footer" class="dialog-footer">
-              <el-button type="primary" @click="dialogVisible = false"
-                >取消</el-button
-              >
-              <el-button @click="logoutBtn">确定</el-button>
+              <el-button type="danger" @click="dialogVisible = false" class="center">取消</el-button>
+              <el-button type="primary" @click="logoutBtn" class="center">确定</el-button>
             </span>
           </el-dialog>
         </el-card>
@@ -136,6 +134,11 @@ export default {
 }
 #app {
   overflow: hidden;
+}
+
+.center {
+  position: relative;
+  left: -140px;
 }
 </style>
   

@@ -28,7 +28,7 @@
                 
                 </div>
               </el-col>
-              <el-col :span="16" class="order-detail">
+              <el-col :span="12" class="order-detail">
                 <p>酒店：{{order.hotel_name}}</p>
                 <p>预订房间类型：{{order.room_type}}</p>
                 <p>预订房间号：{{order.room_number}}</p>
@@ -36,7 +36,24 @@
                 <p>离店时间：{{order.end}}</p>            
                 <p>费用：{{order.price}}</p>
               </el-col>
+              <el-col :span="4">
+                <el-button @click="dialogVisible = true" :disabled="false" type="text" class="order-back">评价</el-button>
+              </el-col>
             </el-row>
+            <el-dialog title="评价" :visible.sync="dialogVisible" width="80%">
+              <span>为我们的服务打个分吧~</span>
+              <el-rate v-model="contact.eva" :colors="colors" class="mb-1"></el-rate>
+              <el-form :model="contact" status-icon ref="contact" class="mb-1">
+                <el-input type="textarea" :autosize="{ minRows: 4, maxRows: 10}" placeholder="输入你的建议或意见吧..." v-model="contact.comment"></el-input>
+              </el-form>
+              <el-button @click="submitBtn" :type="btnType" class="contactbtn" :disabled="disabled">
+                <i :class="iconstyle"></i> {{btnText}}
+              </el-button>
+              <span slot="footer" class="dialog-footer">
+                <el-button type="danger" @click="dialogVisible = false" class="center">取消</el-button>
+                <el-button type="primary" @click="logoutBtn" class="center">确定</el-button>
+              </span>
+            </el-dialog>
           </el-card>
         </el-col>
         <el-col :span="24" class="text-center mb-1">
@@ -53,8 +70,19 @@
   export default {
     data() {
       return {
+        dialogVisible: false,
+        contact: {
+          comment: '',
+          eva: null,
+        },
+        iconstyle: 'el-icon-document-checked',
+        disabled: false,
+        btnType: 'primary',
+        isRealcontact: false,
+        colors: ['#99A9BF', '#F7BA2A', '#FF9900'],
+        btnText: '提交反馈',
         orderdata: {
-
+          
         },
         length: '',
       }
@@ -66,6 +94,34 @@
       back() {
         this.$router.push("/mine");
       },
+      submitBtn() {
+        console.log(this.contact);
+        this.disabled = true;
+        this.iconstyle = "el-icon-loading";
+        this.axios.post("http://localhost:8090/user/publishComment", {
+          "information": this.contact.comment,
+          "type": this.contact.eva,
+        })
+        .then(res => {
+          console.log(res);
+					if (res.data.code == 200) {
+						this.iconstyle = "el-icon-check";
+						this.btnType = "success";
+						this.btnText = "您的反馈已提交！";
+					}
+          else {
+						this.iconstyle = "el-icon-close";
+						this.btnType = "danger";
+						this.btnText = res.data.data;
+					}
+        })
+        .catch(res => {
+          console.log(res);
+          this.iconstyle = "el-icon-close";
+          this.btnType = "danger";
+          this.btnText = "您的反馈未能提交"
+        })
+      }
     },
     mounted() {
       this.axios.get("http://localhost:9091/customer/queryBookings")

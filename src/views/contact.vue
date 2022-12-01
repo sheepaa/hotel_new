@@ -8,9 +8,9 @@
             <div class="contact-info text-centre">
               <p class="contact-eng">Very goooooooood Hotel, Inc</p>
               <p>广东省深圳市南山区学苑大道1088号</p>
-              <p>南方科技大学OOAD开发小组</p>
-              <p>Tel：121-1865-4236</p>
-              <p>Fax：84159</p>
+              <p>南方科技大学OOAD小组</p>
+              <p>Tel：189-6480-7259</p>
+              <p><E-mail>2302236513@qwer.com</E-mail></p>
             </div>
             <p class="contact-subtitle">服务评价</p>
             <span>为我们的服务打个分吧~</span>
