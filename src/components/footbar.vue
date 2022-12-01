@@ -109,4 +109,8 @@
     text-decoration: none;
     color: #fff;
   }
+
+  .font {
+  font-family: bobo;
+  }
 </style>

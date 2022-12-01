@@ -137,3 +137,10 @@ a {
 .transparament {
   background-color: rgb(255, 255, 255, 0.8);
 }
+
+@font-face {
+  font-family: bobo;
+  src: url('./kabuqinuo.otf');
+  font-weight: normal;
+  font-style: normal;
+}

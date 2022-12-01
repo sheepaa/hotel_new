@@ -150,8 +150,9 @@ export default {
 <style scoped="scoped">
 
 .title {
-  font-size: 50px;
-  color: rgb(195, 171, 199);
+  font-size: 75px;
+  font-family: bobo;
+  color: rgb(244, 188, 254);
 }
 
 .image {
