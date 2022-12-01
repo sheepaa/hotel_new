@@ -139,8 +139,14 @@ a {
 }
 
 @font-face {
-  font-family: bobo;
+  font-family: 'bobo';
   src: url('./kabuqinuo.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'fang';
+  src: url('./jian.ttf');
   font-weight: normal;
   font-style: normal;
 }

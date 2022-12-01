@@ -2,7 +2,7 @@
   <div>
     <el-container class="wrapper">
       <div :style="{ width: '100%', height: '80px' }">
-        <el-tabs class="title">欢迎使用酒店预订</el-tabs>
+        <el-tabs class="title">在地图上选择酒店</el-tabs>
       </div>
       <el-main class="section">
         <div class="amap-page-container">
@@ -144,9 +144,10 @@ export default {
 <style scoped="scoped">
 
 .title {
-  font-size: 75px;
-  font-family: bobo;
-  color: rgb(244, 188, 254);
+  font-size: 60px;
+  font-family: fang;
+  color: rgb(56, 6, 98);
+  border: 4px;
 }
 
 .image {

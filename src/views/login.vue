@@ -219,10 +219,12 @@ export default {
 }
 
 .title {
+  font-family: fang;
   font-size: 5rem;
   font-weight: lighter;
   margin-top: 1rem;
-  color: #ba8cc9;
+  color: #d6a1e8;
+  stroke-width: 4px;
 }
 .wrapper {
   min-height: 90vh;

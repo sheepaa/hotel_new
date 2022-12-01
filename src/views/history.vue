@@ -201,4 +201,7 @@
   .order-back {
     padding: 5px;
   }
+  .center {
+    margin-left: 50%;
+  }
 </style>
