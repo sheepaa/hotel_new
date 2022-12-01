@@ -14,6 +14,7 @@
             </el-row>
           </el-card>
         </el-col>
+
         <el-col :span="24" v-for="(order, index) in orderdata" :key="index">
           <el-card class="box-card">
             <el-row class="text item" :gutter="10">
@@ -23,26 +24,17 @@
                 </div>
                 <div class="text-center">
                   <p class="order-id">订单号</p>
-                  <p class="order-id-data">{{order.order.id}}</p>
-                  <p class="order-time">下单时间</p>
-                  <p class="order-time-data">{{order.order.createTime}}</p>
+                  <p class="order-id-data">{{order.id}}</p>
+                
                 </div>
               </el-col>
               <el-col :span="16" class="order-detail">
-                <p>预订房间类型：{{order.room.type.typeName}}</p>
-                <p>预订房间号：{{order.room.number}}</p>
-                <p>入住时间：{{order.order.inTime}}</p>
-                <p>离店时间：{{order.order.leaveTime}}</p>
-                <p>入住人数：{{order.order.realPeople}}</p>
-                <p>提供发票：
-                  <span v-if="order.order.fapiao == 1">是</span>
-                  <span v-else>否</span>
-                </p>
-                <p>预计费用：{{order.order.realPrice}}</p>
-                <p>是否受理：
-                  <span v-if="order.order.flag == 1">是</span>
-                  <span v-else>否</span>
-                </p>
+                <p>酒店：{{order.hotel_name}}</p>
+                <p>预订房间类型：{{order.room_type}}</p>
+                <p>预订房间号：{{order.room_number}}</p>
+                <p>入住时间：{{order.start}}</p>
+                <p>离店时间：{{order.end}}</p>            
+                <p>费用：{{order.price}}</p>
               </el-col>
             </el-row>
           </el-card>
@@ -76,10 +68,11 @@
       },
     },
     mounted() {
-      this.axios.get("http://localhost:8090/user/historyOrder")
+      this.axios.get("http://localhost:9091/customer/queryBookings")
         .then(res => {
           // console.log(res.data.data);
-          this.orderdata = res.data.data;
+          console.log(res.data)
+          this.orderdata = res.data;
           this.length = this.orderdata.length;
         })
         .catch(res => {
