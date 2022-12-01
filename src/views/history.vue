@@ -41,6 +41,7 @@
                 <el-button @click="changeVisible = true" :disabled="false" type="text" class="order-back">修改订单</el-button>
               </el-col>
             </el-row>
+
             <el-dialog title="评价" :visible.sync="dialogVisible" width="80%">
               <span>为我们的服务打个分吧~</span>
               <el-rate v-model="contact.eva" :colors="colors" class="mb-1"></el-rate>
@@ -50,11 +51,24 @@
               <el-button @click="submitBtn" :type="btnType" class="contactbtn" :disabled="disabled">
                 <i :class="iconstyle"></i> {{btnText}}
               </el-button>
+
+              <el-upload
+  class="upload-demo"
+  action="https://jsonplaceholder.typicode.com/posts/"
+  :on-preview="handlePreview"
+  :on-remove="handleRemove"
+  :file-list="fileList"
+  list-type="picture">
+  <el-button size="small" type="primary" class="mt-1">点击上传</el-button>
+  <div slot="tip" class="el-upload__tip">只能上传jpg/png文件,且不超过500kb</div>
+</el-upload>
+
               <span slot="footer" class="dialog-footer">
                 <el-button type="danger" @click="dialogVisible = false" class="center">取消</el-button>
                 <el-button type="primary" @click="submitBtn" class="center">确定</el-button>
               </span>
             </el-dialog>
+
             <el-dialog title="退款" :visible.sync="changeVisible" width="60%">
               <span>若您想要修改订单，需要取消原订单重新预订。费用会退回您的支付账户中~</span>
               <span slot="footer" class="dialog-footer">
@@ -78,6 +92,7 @@
   export default {
     data() {
       return {
+        fileList: [{}],
         dialogVisible: false,
         changeVisible: false,
         contact: {
@@ -106,6 +121,11 @@
       footbar,
     },
     methods: {
+      handleRemove(file, fileList) {
+        console.log(file, fileList);
+      },
+      handlePreview(file) {
+        console.log(file)},
       back() {
         this.$router.push("/mine");
       },

@@ -94,7 +94,7 @@ export default {
   width: 45rem;
   height: 26rem;
   margin: auto;
-  border: 1rem solid blueviolet;
+  border: 1rem solid rgb(138, 44, 226);
   border-radius: 1em;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.8);
   padding: 1em 2em 2em;
