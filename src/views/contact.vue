@@ -23,7 +23,7 @@
             <el-button @click="submitBtn" :type="btnType" class="contactbtn" :disabled="disabled">
               <i :class="iconstyle"></i> {{btnText}}
             </el-button>
-            <el-button @click="back">返回</el-button>
+            <el-button @click="back" type="danger">返回</el-button>
           </div>
         </el-card>
       </el-main>

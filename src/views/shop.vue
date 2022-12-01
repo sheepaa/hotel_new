@@ -40,7 +40,7 @@
                 <el-button type="primary" @click="dialogVisible = true"><i class="el-icon-discount"></i> 兑换</el-button>
               </el-col>
             </el-row>
-            <el-button @click="back"  class="mt-5">返回</el-button>
+            <el-button @click="back" type="danger" class="mt-5">返回</el-button>
           </div>
           <el-dialog title="退出" :visible.sync="dialogVisible" width="30%">
             <span>你确定要兑换该件商品吗？</span>
@@ -132,7 +132,7 @@ export default {
 }
 
 .mt-5 {
-  margin-top: 5rem;
+  margin-bottom: 0.5rem;
 }
 #app {
   overflow: hidden;

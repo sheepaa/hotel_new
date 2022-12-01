@@ -19,7 +19,7 @@
             <el-button :type="btnType" @click="changepswdBtn" class="changepswdbtn" :disabled="disabled">
               <i :class="iconstyle"></i> 确认修改
             </el-button>
-            <el-button @click="back">返回</el-button>
+            <el-button @click="back" type="danger">返回</el-button>
           </div>
         </el-card>
       </el-main>

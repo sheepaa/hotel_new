@@ -89,7 +89,7 @@
 							  </p>
 							</el-col>
 						</el-row>
-            <el-button @click="back">返回</el-button>
+            <el-button @click="back" type="danger">返回</el-button>
           </div>
         </el-card>
       </el-main>
