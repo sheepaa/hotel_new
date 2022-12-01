@@ -21,7 +21,8 @@
             </el-dialog>
         </div>
         
-        <el-button @click="back" type="danger" class="mb-1">返回</el-button>
+        <el-button @click="back" type="danger" class="mb-1">返回首页</el-button>
+        <el-button @click="backshou" type="danger" class="mb-1">我的收藏</el-button>
     </el-card>
 </template>
 
@@ -80,9 +81,13 @@
                 ]
             }
         },
-        methods: {back() {
-        this.$router.push("/findhotel");
-      },
+        methods: {
+            back() {
+                this.$router.push("/findhotel");
+            },
+            backshou() {
+                this.$router.push("/shou");
+            },
             init() {
                 console.log("456")
                 this.commentVisible = true;

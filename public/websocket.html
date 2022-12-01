@@ -5,28 +5,79 @@
     <script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.min.js"></script>
     <script src="http://cdn.bootcss.com/stomp.js/2.3.3/stomp.min.js"></script>
     <script src="https://cdn.bootcss.com/sockjs-client/1.1.4/sockjs.min.js"></script>
+    <style type="text/css">
+        .bottom {
+            height: 70px;
+            width: 40%;
+            position: absolute;
+            bottom:5%;
+            left:30%;
+        }
+
+        .bottomfa {
+            height: 70px;
+            width: 10%;
+            position: absolute;
+            bottom:5%;
+            left:72%;
+        }
+
+        .chat {
+            margin-bottom: 3rem;
+        }
+    </style>
 </head>
 
-<body>
+<body bgcolor="gray">
+
+
+
 <div style="margin: auto;text-align: center">
-    <h1>Welcome to websocket</h1>
+    <h1>客服</h1>
 </div>
-<br/>
+
+
+
+
+
+
+
 <div style="margin: auto;text-align: center">
+        请选择ID:
     <select id="onLineUser">
-        <option>--所有--</option>
+        <option>----</option>
     </select>
-    <input id="text" type="text"/>
-    <button onclick="send()">发送消息</button>
 </div>
+
+
+
 <br>
+
+
 <div style="margin-right: 10px;text-align: right">
-    <button onclick="closeWebSocket()">关闭连接</button>
+    <button class="red" onclick="closeWebSocket()">关闭连接</button>
 </div>
+
+
 <hr/>
-<div id="message" style="text-align: center;"></div>
+
+<!-- 聊天记录 -->
+<div id="message" style="text-align: center;" class="chat"></div>
 <input type="text" th:value="${username}" id="username" style="display: none"/>
+
+
+
+
+
+
+
+<!-- 发送 -->
+<input class="bottom" id="text" type="text"/>
+<button class="bottomfa" onclick="send()">发送消息</button>
 </body>
+
+
+
 
 
 <script type="text/javascript">
@@ -54,7 +105,7 @@
                 var onlineName = obj.username;
                 var option = "<option>" + onlineName + "</option>";
                 $("#onLineUser").append(option);
-                setMessageInnerHTML(onlineName + "上线了");
+                setMessageInnerHTML(onlineName + "在线");
             } else if (obj.messageType == 2) {
                 $("#onLineUser").empty();
                 var onlineName = obj.onlineUsers;
@@ -90,7 +141,7 @@
         };
     } else {
         // 浏览器不支持 WebSocket
-        alert("您的浏览器不支持 WebSocket!");
+        alert("换一个浏览器吧");
     }
 
     //将消息显示在网页上
@@ -108,7 +159,7 @@
         if (selectText == "--所有--") {
             selectText = "All";
         } else {
-            setMessageInnerHTML(document.getElementById('username').value + "对" + selectText + "说：" + $("#text").val());
+            setMessageInnerHTML(document.getElementById('username').value + ": " + $("#text").val());
         }
         var message = {
             "message": document.getElementById('text').value,
