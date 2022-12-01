@@ -54,7 +54,7 @@
 
               <el-upload
   class="upload-demo"
-  action="https://jsonplaceholder.typicode.com/posts/"
+  action="https://jsonplaceholder.typicode.com/todos/1"
   :on-preview="handlePreview"
   :on-remove="handleRemove"
   :file-list="fileList"
