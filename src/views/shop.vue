@@ -124,10 +124,10 @@ export default {
         .catch((err) => {
           alert("error");
         });
-
       this.axios
         .get("http://localhost:9091/customer/selectCount")
         .then((result) => {
+          console.log(result.data)
           this.credits = result.data;
         })
         .catch((err) => {

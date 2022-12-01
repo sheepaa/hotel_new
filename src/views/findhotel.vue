@@ -38,7 +38,7 @@
               <el-col :span="4" class="enter">
                 <el-row>
                 <el-button @click="toFindRoom(hotel)" type="primary"  size="medium">Enter</el-button>
-                <el-button @click="showcomments()" type="primary"  size="medium">Comments</el-button>
+                <el-button @click="showcomments(hotel.hotel_name)" type="primary"  size="medium">Comments</el-button>
                 </el-row>
                 <el-row class="mt-1">
                   <p class="tool-icon" @click="cli">
@@ -157,7 +157,7 @@ export default {
       this.$refs.footbar.findBtn();
       console.log("ok");
     },
-    showcomments(){
+    showcomments(hotel_name){
       // console.log("qwert")
       // this.Visible1=true;
       // this.$nextTick(()=>{
@@ -165,7 +165,7 @@ export default {
       //   this.$refs.dialog_comment.init();
       //   console.log("bmw")
       // })
-      
+      this.$store.state.hotelName = hotel_name;
       this.$router.push("/comments");
     }
   },
