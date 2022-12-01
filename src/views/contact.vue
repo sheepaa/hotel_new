@@ -9,20 +9,9 @@
               <p class="contact-eng">Very goooooooood Hotel, Inc</p>
               <p>广东省深圳市南山区学苑大道1088号</p>
               <p>南方科技大学OOAD开发小组</p>
-              <p>Tel：189-6480-7259</p>
+              <p>Tel:189-6480-7259</p>
               <p><E-mail>2302236513@qwer.com</E-mail></p>
             </div>
-            <p class="contact-subtitle">服务评价</p>
-            <span>为我们的服务打个分吧~</span>
-            <el-rate v-model="contact.eva" :colors="colors" class="mb-1">
-            </el-rate>
-            <el-form :model="contact" status-icon ref="contact" class="mb-1">
-              <el-input type="textarea" :autosize="{ minRows: 4, maxRows: 10}" placeholder="输入你的建议或意见吧..." v-model="contact.comment">
-              </el-input>
-            </el-form>
-            <el-button @click="submitBtn" :type="btnType" class="contactbtn" :disabled="disabled">
-              <i :class="iconstyle"></i> {{btnText}}
-            </el-button>
             <el-button @click="back" type="danger">返回</el-button>
           </div>
         </el-card>
@@ -59,34 +48,6 @@
       back() {
         this.$router.push("/mine");
       },
-      submitBtn() {
-        console.log(this.contact);
-        this.disabled = true;
-        this.iconstyle = "el-icon-loading";
-        this.axios.post("http://localhost:8090/user/publishComment", {
-          "information": this.contact.comment,
-          "type": this.contact.eva,
-        })
-        .then(res => {
-          console.log(res);
-					if (res.data.code == 200) {
-						this.iconstyle = "el-icon-check";
-						this.btnType = "success";
-						this.btnText = "您的反馈已提交！";
-					}
-          else {
-						this.iconstyle = "el-icon-close";
-						this.btnType = "danger";
-						this.btnText = res.data.data;
-					}
-        })
-        .catch(res => {
-          console.log(res);
-          this.iconstyle = "el-icon-close";
-          this.btnType = "danger";
-          this.btnText = "您的反馈未能提交"
-        })
-      }
     },
   }
 </script>
@@ -114,29 +75,8 @@
     min-height: 94vh;
   }
 
-  .el-main {
-    max-height: 94vh;
-  }
-
   #app {
     overflow: hidden;
-  }
-
-  .contactbtn {
-    /* margin-top: 2rem; */
-  }
-
-  .contact {
-    margin-top: 5vh;
-  }
-
-  .contact a,
-  .contact div {
-    color: #409EFF;
-  }
-
-  .contact p {
-    margin: 0.5rem;
   }
 
   .contact-eng {
@@ -148,10 +88,5 @@
   .contact-info p {
     margin: 0.4rem 0;
   }
-
-  .contact-subtitle {
-    margin-top: 8rem;
-    font-size: 1.5rem;
-    font-weight: lighter;
-  }
+  
 </style>
