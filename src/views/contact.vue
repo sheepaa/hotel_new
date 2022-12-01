@@ -12,7 +12,17 @@
               <p>Tel:189-6480-7259</p>
               <p><E-mail>2302236513@qwer.com</E-mail></p>
             </div>
-            <el-button @click="back" type="danger">返回</el-button>
+            <div class="mt text-centre">
+              <p class="contact-title">或者</p>
+              <el-button @click="dialogVisible = true" :disabled="false" type="text" class="order-back">点击此处在线联系人工客服</el-button>
+            </div>
+            <el-dialog title="客服" :visible.sync="dialogVisible" width="60%">
+              <iframe :src='src' frameborder='0' style="width:40%;height:80%"></iframe>
+              <span slot="footer" class="dialog-footer">
+                <el-button type="danger" @click="changeVisible = false" class="center">返回</el-button>
+              </span>
+            </el-dialog>
+            <el-button @click="back" type="danger" class="mt">返回</el-button>
           </div>
         </el-card>
       </el-main>
@@ -27,6 +37,8 @@
     data() {
       return {
         contact: {
+          showSessionId:'',
+          src:'',
           comment: '',
           eva: null,
         },
@@ -43,6 +55,8 @@
     },
     mounted() {
       this.$store.commit("setMine");
+      this.showSessionId = window.location.search;
+      // this.src = `./public/websocket.html${this.showSessionId}`;
     },
     methods: {
       back() {
@@ -84,9 +98,12 @@
     font-weight: bold;
     margin-bottom: 0;
   }
-
+  
   .contact-info p {
     margin: 0.4rem 0;
   }
   
+  .mt {
+    margin-top: 5rem;
+  }
 </style>
