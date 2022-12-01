@@ -1,26 +1,58 @@
 <template>
   <el-dialog title="房间平面分布" :visible.sync="detailVisible" width="90%">
     <el-card class="box-card ml-4 mr-4 mb-1 mt-1 transparament">
-      <el-button type="warning" disabled class="double1 down">双1</el-button>
-      <el-button type="warning" disabled class="double1 down">双2</el-button>
-      <el-button type="warning" disabled class="double2 down">双3</el-button>
-      <el-button type="warning" disabled class="double2 down">双4</el-button>
-      <el-button type="warning" disabled class="double3 down">双5</el-button>
-      <el-button type="warning" disabled class="double3 down">双6</el-button>
+      <el-button type="warning" :disabled="disables[101]" class="double1 down" @click="chooseRoom('101')"
+        >双1</el-button
+      >
+      <el-button type="warning" :disabled="disables[102]" class="double1 down" @click="chooseRoom('102')"
+        >双2</el-button
+      >
+      <el-button type="warning" :disabled="disables[103]" class="double2 down" @click="chooseRoom('103')"
+        >双3</el-button
+      >
+      <el-button type="warning" :disabled="disables[104]" class="double2 down" @click="chooseRoom('104')"
+        >双4</el-button
+      >
+      <el-button type="warning" :disabled="disables[105]" class="double3 down" @click="chooseRoom('105')"
+        >双5</el-button
+      >
+      <el-button type="warning" :disabled="disables[106]" class="double3 down" @click="chooseRoom('106')"
+        >双6</el-button
+      >
       <img :src="pingmiantest" @click="a" alt="" class="imagee" />
       <el-row>
-        <el-button type="warning" disabled class="double1 up">大1</el-button>
-        <el-button type="warning" disabled class="double1 up">大2</el-button>
-        <el-button type="warning" disabled class="double2 up">大3</el-button>
-        <el-button type="warning" disabled class="double2 up">大4</el-button>
-        <el-button type="warning" disabled class="double3 up">大5</el-button>
-        <el-button type="warning" disabled class="double3 up">大6</el-button>
-        <el-button type="warning" disabled class="double4 up">单1</el-button>
-        <el-button type="warning" disabled class="double5 up">单2</el-button>
-        <el-button type="warning" disabled class="double5 up">单3</el-button>
+        <el-button type="warning" :disabled="disables[115]" class="double1 up" @click="chooseRoom('115')"
+          >大1</el-button
+        >
+        <el-button type="warning" :disabled="disables[114]" class="double1 up" @click="chooseRoom('114')"
+          >大2</el-button
+        >
+        <el-button type="warning" :disabled="disables[113]" class="double2 up" @click="chooseRoom('113')"
+          >大3</el-button
+        >
+        <el-button type="warning" :disabled="disables[112]" class="double2 up" @click="chooseRoom('112')"
+          >大4</el-button
+        >
+        <el-button type="warning" :disabled="disables[111]" class="double3 up" @click="chooseRoom('111')"
+          >大5</el-button
+        >
+        <el-button type="warning" :disabled="disables[110]" class="double3 up" @click="chooseRoom('110')"
+          >大6</el-button
+        >
+        <el-button type="warning" :disabled="disables[109]" class="double4 up" @click="chooseRoom('109')"
+          >单1</el-button
+        >
+        <el-button type="warning" :disabled="disables[108]" class="double5 up" @click="chooseRoom('108')"
+          >单2</el-button
+        >
+        <el-button type="warning" :disabled="disables[107]" class="double5 up" @click="chooseRoom('107')"
+          >单3</el-button
+        >
       </el-row>
       <el-row>
-        <el-button type="success" @click="close" class="confirm">确认</el-button>
+        <el-button type="success" @click="close" class="confirm"
+          >确认</el-button
+        >
         <el-button type="danger" @click="close" class="confirm">取消</el-button>
       </el-row>
     </el-card>
@@ -29,13 +61,50 @@
 <script>
 export default {
   name: "dialogComponent",
+
+  props: {
+    roomnumbers: {
+      type: Array,
+      default: function () {
+        return [];
+      },
+    },
+  },
+
   data() {
     return {
+      // props:["roomnumbers"],
       detailVisible: false,
       pingmiantest: require("@/assets/img/pingmian_final.jpg"),
+      test: false,
+      disables: {
+        101: true,
+        102: true,
+        103: true,
+        104: true,
+        105: true,
+        106: true,
+        107: true,
+        108: true,
+        109: true,
+        110: true,
+        111: true,
+        112: true,
+        113: true,
+        114: true,
+        115: true,
+      },
     };
   },
+  mounted() {
+    for(let i=0;i<this.roomnumbers.length;i++){
+      this.disables[this.roomnumbers[i]] = false;
+    }
+  },
   methods: {
+    chooseRoom(roomnumber){
+      this.$emit("received", roomnumber);
+    },
     init() {
       this.detailVisible = true;
       console.log("123");

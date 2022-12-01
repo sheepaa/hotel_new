@@ -87,7 +87,17 @@ export default {
     copyright,
   },
   methods: {
+
+
     submitForm(formName) {
+    //   this.axios.get("http://localhost:9091/customer/aaa",{
+    //   params:{
+    //     te:"12334"
+    //   }
+    // }).then((res) => {
+    //   console.log(res);
+    // });
+
       this.$refs[formName].validate((valid) => {
         if (valid) {
           this.axios

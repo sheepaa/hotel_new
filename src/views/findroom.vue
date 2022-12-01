@@ -204,7 +204,9 @@ export default {
     footbar,
   },
 
+  
   methods: {
+    
     clickDisplayInfo(room) {
       console.log(room)
       console.log(room.intro);
@@ -217,34 +219,57 @@ export default {
     //   console.log(123);
     //   this.roomVisible = true;
     // },
-    searchBtn() {
-      // console.log(this.changeTimeStr(this.form.comedate));
-      if (this.form.comedate == "" || this.form.leavedate == "") {
-        this.dialogVisible = true;
-        return;
-      }
-      console.log("into")
-      console.log(this.form.comedate)
-      console.log(this.form.leavedate)
-      console.log("aba")
-      this.$store.commit("setDate", [this.form.comedate, this.form.leavedate]);
 
-      this.$axios
-        .post("http://localhost:9091/customer/select4", {
-          hotel_name: this.$store.state.hotelName,
-          // start: this.changeTimeStr(this.form.comedate),
-          // end: this.changeTimeStr(this.form.leavedate),
-          start: this.form.comedate,
-          end: this.form.leavedate,
-        })
 
-        .then((res) => {
-          this.listdata = res.data;
-        })
-        .catch(() => {
-          console.log("error");
-        });
-    },
+    searchBtn(){
+      alert("fdsfdsfd"),
+
+// this.$axios.post("http://localhost:9091/customer/aaa",params),
+this.$ajax.post("",{te:'uuuu'}).then();
+
+alert("yyyyy")
+
+      
+
+
+  }
+
+,
+
+    // searchBtn(param) {
+    //   alert("dd")
+      
+    //   this.$axios.post("/customer/aaa",param)
+    //   alert("ee")
+
+
+    //   // console.log(this.changeTimeStr(this.form.comedate));
+    //   // if (this.form.comedate == "" || this.form.leavedate == "") {
+    //   //   this.dialogVisible = true;
+    //   //   return;
+    //   // }
+    //   // console.log("into")
+    //   // console.log(this.form.comedate)
+    //   // console.log(this.form.leavedate)
+    //   // console.log("aba")
+    //   // this.$store.commit("setDate", [this.form.comedate, this.form.leavedate]);
+
+    //   // this.$axios
+    //   //   .post("http://localhost:9091/customer/select4", {
+    //   //     hotel_name: this.$store.state.hotelName,
+    //   //     // start: this.changeTimeStr(this.form.comedate),
+    //   //     // end: this.changeTimeStr(this.form.leavedate),
+    //   //     start: this.form.comedate,
+    //   //     end: this.form.leavedate,
+    //   //   })
+
+    //   //   .then((res) => {
+    //   //     this.listdata = res.data;
+    //   //   })
+    //   //   .catch(() => {
+    //   //     console.log("error");
+    //   //   });
+    // },
 
     getDate: function () {
       var _this = this;

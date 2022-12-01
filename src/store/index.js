@@ -11,6 +11,7 @@ export default new Vuex.Store({
     //订单模块
     order:{
       // hotelName:state.hotelName,
+      outTradeNo:"",
       phone_number:"",
       hotelName:"",
       roomType:"",

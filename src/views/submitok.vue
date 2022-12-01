@@ -30,6 +30,7 @@
    components: {
      footbar,
    },
+
    methods: {
      back() {
        this.$store.commit('setFind');
@@ -39,6 +40,29 @@
        this.$store.commit('setMine');
        this.$router.push("/history");
      }
+   },
+   mounted(){
+    this.axios
+        .post("http://localhost:9091/alipay/addOrder", {
+        //  outTradeNo:this.$store.state.order.outTradeNo,
+        // params:{
+        //   x:"123"
+        // }
+        //  outTradeNo:"22222",
+        //  subject:"3434343fdfdfd",
+        //  totalAmount:this.$store.state.order.priceTotal,
+        //   hotel_name:this.$store.state.order.hotelName,
+        //   start:this.$store.state.order.start,
+        //   end:this.$store.state.order.end,
+        //   room_number:this.$store.state.order.roomNumber,
+        //   phone_number:this.$store.state.order.phone_number,
+        })
+        .then((res) => {
+          alert("add successfully!!")
+        })
+        .catch((res) => {
+          alert("faillllll")
+        });
    }
  }
 </script>

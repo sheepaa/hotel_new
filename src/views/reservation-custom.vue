@@ -57,7 +57,7 @@
                   <i :class="searchicon"></i>
                   查询可用房间
                 </el-button>
-                <dialog-component v-if="Visible" ref="dialog"></dialog-component>
+                <dialog-component v-if="Visible" ref="dialog" v-bind:roomnumbers="roomnumbers" @received="getRoomNumber"></dialog-component>
               </el-form-item>
 
               <!-- 提供一个房间号码对房间id的映射，即用户选择的是房间号，但存的是房间id -->
@@ -78,7 +78,6 @@
                 <el-button
                   type="primary"
                   @click="toPay()"
-                
                   >立即预订</el-button
                 >
                 <!-- <el-button @click="resetForm('ruleForm')">重置</el-button> -->
@@ -131,7 +130,7 @@ export default {
       searchBtnType: "primary",
       dialogVisible: false,
 
-      roomnumbers: ["1", "2"],
+      roomnumbers: ["101", "102"],
       roomnumber: "",
 
       roomtype: [],
@@ -174,29 +173,101 @@ export default {
     dialogComponent,
   },
   methods: {
+    getRoomNumber(number){
+      this.roomnumber = number
+    },
     toPay(){
       if (this.roomnumber.length == 0){
         alert("please choose a roomnumber")
       }else{
         this.$store.state.order.roomNumber = this.roomnumber;
       }
-      this.axios
-        .post("http://localhost:9091/customer/addOrder", {
+      // this.axios
+      //   .post("http://localhost:9091/customer/addOrder", {
+      //     hotel_name:this.$store.state.order.hotelName,
+      //     start:this.$store.state.order.start,
+      //     end:this.$store.state.order.end,
+      //     room_number:this.$store.state.order.roomNumber,
+      //     phone_number:this.$store.state.order.phone_number,
+      //     price:this.$store.state.order.priceTotal,
+      //   })
+      //   .then((res) => {
+      //     alert("submit ok")
+      //     this.$router.push("/submitok");
+      //     this.$store.state.order.outTradeNo = res.data
+
+      //   })
+      //   .catch((res) => {
+      //     alert("submit fail")
+      //     this.$router.push("/submitfail");
+      //   });
+
+      // this.axios
+      //   .post("http://localhost:9091/alipay/pay", {
+      //   //  outTradeNo:this.$store.state.order.outTradeNo,
+      //   params:{
+      //     x:"123"
+      //   }
+      //   //  outTradeNo:"22222",
+      //   //  subject:"suibian",
+      //   //  totalAmount:"100000",
+      //   })
+      //   .then((res) => {
+      //     alert("oooooook")
+      //     window.open('http://localhost:9091/alipay/pay', '_blank');
+      //   })
+      //   .catch((res) => {
+      //     alert("faillllll")
+      //   });
+        this.axios
+        .post("http://localhost:9091/alipay/pay", {
+        //  outTradeNo:this.$store.state.order.outTradeNo,
+        // params:{
+        //   x:"123"
+        // }
+        //  outTradeNo:"22222",
+        //  subject:"3434343fdfdfd",
+         totalAmount:this.$store.state.order.priceTotal,
           hotel_name:this.$store.state.order.hotelName,
           start:this.$store.state.order.start,
           end:this.$store.state.order.end,
           room_number:this.$store.state.order.roomNumber,
           phone_number:this.$store.state.order.phone_number,
-          price:this.$store.state.order.priceTotal,
         })
         .then((res) => {
-          alert("submit ok")
+          console.log(res)
+          alert("oooooook")
+          // window.open('http://localhost:9091/alipay/pay', '_blank');
+          window.open('http://localhost:9091/alipay/pay1', '_blank');
+          window.open('http://localhost:9091/alipay/pay1', '_blank');
+          this.sleep(1000)
           this.$router.push("/submitok");
         })
         .catch((res) => {
-          alert("submit fail")
-          this.$router.push("/submitfail");
+          alert("faillllll")
         });
+        // this.$router.push("/submitok");
+      
+
+
+
+      // this.axios
+      //   .post("http://localhost:9091/customer/addOrder", {
+      //     hotel_name:this.$store.state.order.hotelName,
+      //     start:this.$store.state.order.start,
+      //     end:this.$store.state.order.end,
+      //     room_number:this.$store.state.order.roomNumber,
+      //     phone_number:this.$store.state.order.phone_number,
+      //     price:this.$store.state.order.priceTotal,
+      //   })
+      //   .then((res) => {
+      //     alert("submit ok")
+      //     this.$router.push("/submitok");
+      //   })
+      //   .catch((res) => {
+      //     alert("submit fail")
+      //     this.$router.push("/submitfail");
+      //   });
     },
 
     submitForm(formName) {

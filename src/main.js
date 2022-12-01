@@ -14,6 +14,7 @@ import AMap from 'vue-amap';
 
 import axios from 'axios'
 axios.defaults.withCredentials = true;
+// axios.defaults.headers.post['Content-Type']='application/x-www-form-urlencoded';
 Vue.prototype.$axios = axios
 
 Vue.config.productionTip = false;
