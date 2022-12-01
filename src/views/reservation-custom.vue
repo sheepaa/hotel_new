@@ -182,25 +182,27 @@ export default {
       }else{
         this.$store.state.order.roomNumber = this.roomnumber;
       }
-      // this.axios
-      //   .post("http://localhost:9091/customer/addOrder", {
-      //     hotel_name:this.$store.state.order.hotelName,
-      //     start:this.$store.state.order.start,
-      //     end:this.$store.state.order.end,
-      //     room_number:this.$store.state.order.roomNumber,
-      //     phone_number:this.$store.state.order.phone_number,
-      //     price:this.$store.state.order.priceTotal,
-      //   })
-      //   .then((res) => {
-      //     alert("submit ok")
-      //     this.$router.push("/submitok");
-      //     this.$store.state.order.outTradeNo = res.data
+      
+      //不跳转支付宝
+      this.axios
+        .post("http://localhost:9091/customer/addOrder", {
+          hotel_name:this.$store.state.order.hotelName,
+          start:this.$store.state.order.start,
+          end:this.$store.state.order.end,
+          room_number:this.$store.state.order.roomNumber,
+          phone_number:this.$store.state.order.phone_number,
+          price:this.$store.state.order.priceTotal,
+        })
+        .then((res) => {
+          alert("submit ok")
+          this.$router.push("/submitok");
+          this.$store.state.order.outTradeNo = res.data
 
-      //   })
-      //   .catch((res) => {
-      //     alert("submit fail")
-      //     this.$router.push("/submitfail");
-      //   });
+        })
+        .catch((res) => {
+          alert("submit fail")
+          this.$router.push("/submitfail");
+        });
 
       // this.axios
       //   .post("http://localhost:9091/alipay/pay", {
@@ -219,34 +221,28 @@ export default {
       //   .catch((res) => {
       //     alert("faillllll")
       //   });
-        this.axios
-        .post("http://localhost:9091/alipay/pay", {
-        //  outTradeNo:this.$store.state.order.outTradeNo,
-        // params:{
-        //   x:"123"
-        // }
-        //  outTradeNo:"22222",
-        //  subject:"3434343fdfdfd",
-         totalAmount:this.$store.state.order.priceTotal,
-          hotel_name:this.$store.state.order.hotelName,
-          start:this.$store.state.order.start,
-          end:this.$store.state.order.end,
-          room_number:this.$store.state.order.roomNumber,
-          phone_number:this.$store.state.order.phone_number,
-        })
-        .then((res) => {
-          console.log(res)
-          alert("oooooook")
-          // window.open('http://localhost:9091/alipay/pay', '_blank');
-          window.open('http://localhost:9091/alipay/pay1', '_blank');
-          window.open('http://localhost:9091/alipay/pay1', '_blank');
-          this.sleep(1000)
-          this.$router.push("/submitok");
-        })
-        .catch((res) => {
-          alert("faillllll")
-        });
-        // this.$router.push("/submitok");
+      
+      //跳转支付宝
+        // this.axios
+        // .post("http://localhost:9091/alipay/pay", {
+        //  totalAmount:this.$store.state.order.priceTotal,
+        //   hotel_name:this.$store.state.order.hotelName,
+        //   start:this.$store.state.order.start,
+        //   end:this.$store.state.order.end,
+        //   room_number:this.$store.state.order.roomNumber,
+        //   phone_number:this.$store.state.order.phone_number,
+        // })
+        // .then((res) => {
+        //   console.log(res.data)
+        //   window.open('http://localhost:9091/alipay/pay1', '_blank');
+        //   window.open('http://localhost:9091/alipay/pay1', '_blank');
+        //   this.sleep(1000)
+        //   this.$router.push("/submitok");
+        // })
+        // .catch((res) => {
+        //   alert("faillllll")
+        // });
+        
       
 
 
