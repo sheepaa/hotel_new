@@ -38,6 +38,7 @@
               </el-col>
               <el-col :span="4">
                 <el-button @click="dialogVisible = true" :disabled="false" type="text" class="order-back">评价</el-button>
+                <el-button @click="changeorder = true" :disabled="false" type="text" class="order-back">修改订单</el-button>
               </el-col>
             </el-row>
             <el-dialog title="评价" :visible.sync="dialogVisible" width="80%">
@@ -51,7 +52,14 @@
               </el-button>
               <span slot="footer" class="dialog-footer">
                 <el-button type="danger" @click="dialogVisible = false" class="center">取消</el-button>
-                <el-button type="primary" @click="logoutBtn" class="center">确定</el-button>
+                <el-button type="primary" @click="submitBtn" class="center">确定</el-button>
+              </span>
+            </el-dialog>
+            <el-dialog title="退款" :visible.sync="changeVisible" width="60%">
+              <span>若您想要修改订单，需要取消原订单重新预订。费用会退回您的支付账户中~</span>
+              <span slot="footer" class="dialog-footer">
+                <el-button type="danger" @click="changeVisible = false" class="center">取消</el-button>
+                <el-button type="primary" @click="traceback" class="center">确定</el-button>
               </span>
             </el-dialog>
           </el-card>
@@ -71,6 +79,7 @@
     data() {
       return {
         dialogVisible: false,
+        changeVisible: false,
         contact: {
           comment: '',
           eva: null,
@@ -121,6 +130,10 @@
           this.btnType = "danger";
           this.btnText = "您的反馈未能提交"
         })
+        dialogVisible = false;
+      },
+      traceback() {
+        changeVisible = false;
       }
     },
     mounted() {
