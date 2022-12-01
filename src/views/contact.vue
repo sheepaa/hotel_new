@@ -14,7 +14,7 @@
             </div>
             <div class="mt text-centre">
               <p class="contact-title">或者</p>
-              <el-button @click="dialogVisible = true" :disabled="false" type="text" class="order-back">点击此处在线联系人工客服</el-button>
+              <el-button @click="open()" :disabled="false" type="text">点击此处在线联系人工客服</el-button>
             </div>
             <el-dialog title="客服" :visible.sync="dialogVisible" width="60%">
               <iframe :src='src' frameborder='0' style="width:40%;height:80%"></iframe>
@@ -62,6 +62,9 @@
       back() {
         this.$router.push("/mine");
       },
+      open() {
+        window.open("http://localhost:9091/websocket/helper")
+      }
     },
   }
 </script>
