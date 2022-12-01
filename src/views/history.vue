@@ -23,8 +23,8 @@
                   <i class="el-icon-tickets order-icon"></i>
                 </div>
                 <div class="text-center">
-                  <p class="order-id">订单号</p>
-                  <p class="order-id-data">{{order.id}}</p>
+                  <p class="order-id">订单号:</p>
+                  <p class="order-id-data">{{order.bookingId}}</p>
                 
                 </div>
               </el-col>
@@ -48,16 +48,14 @@
               <el-form :model="contact" status-icon ref="contact" class="mb-1">
                 <el-input type="textarea" :autosize="{ minRows: 4, maxRows: 10}" placeholder="输入你的建议或意见吧..." v-model="contact.comment"></el-input>
               </el-form>
-              <el-button @click="submitBtn" :type="btnType" class="contactbtn" :disabled="disabled">
-                <i :class="iconstyle"></i> {{btnText}}
-              </el-button>
 
               <el-upload
   class="upload-demo"
-  action="https://jsonplaceholder.typicode.com/posts/"
+  action="http://localhost:9091/customer/upload"
   :on-preview="handlePreview"
   :on-remove="handleRemove"
   :file-list="fileList"
+  :data="order.bookingId"
   list-type="picture">
   <el-button size="small" type="primary" class="mt-1">点击上传</el-button>
   <div slot="tip" class="el-upload__tip">只能上传jpg/png文件,且不超过500kb</div>
@@ -65,7 +63,7 @@
 
               <span slot="footer" class="dialog-footer">
                 <el-button type="danger" @click="dialogVisible = false" class="center">取消</el-button>
-                <el-button type="primary" @click="submitBtn" class="center">确定</el-button>
+                <el-button type="primary" @click="submitBtn(order.bookingId)" class="center">确定</el-button>
               </span>
             </el-dialog>
 
@@ -92,6 +90,9 @@
   export default {
     data() {
       return {
+      //   headerObj: {
+      //   'Content-Type':'multipart/form-data',
+      // },
         fileList: [{}],
         dialogVisible: false,
         changeVisible: false,
@@ -130,26 +131,30 @@
       back() {
         this.$router.push("/mine");
       },
-      submitBtn() {
+      submitBtn(bookingId) {
         console.log(this.contact);
         this.disabled = true;
         this.iconstyle = "el-icon-loading";
-        this.axios.post("http://localhost:9091/user/publishComment", {
-          "information": this.contact.comment,
-          "type": this.contact.eva,
+        this.axios.post("http://localhost:9091/customer/saveComments", {
+          "word": this.contact.comment,
+          "score": this.contact.eva,
+          "booking_id":String(bookingId),
         })
         .then(res => {
-          console.log(res);
-					if (res.data.code == 200) {
-						this.iconstyle = "el-icon-check";
-						this.btnType = "success";
-						this.btnText = "您的反馈已提交！";
-					}
-          else {
-						this.iconstyle = "el-icon-close";
-						this.btnType = "danger";
-						this.btnText = res.data.data;
-					}
+          console.log(res.data);
+          if(res.data == true){
+            alert("success~~");
+          }
+					// if (res.data.code == 200) {
+					// 	this.iconstyle = "el-icon-check";
+					// 	this.btnType = "success";
+					// 	this.btnText = "您的反馈已提交！";
+					// }
+          // else {
+					// 	this.iconstyle = "el-icon-close";
+					// 	this.btnType = "danger";
+					// 	this.btnText = res.data.data;
+					// }
         })
         .catch(res => {
           console.log(res);
