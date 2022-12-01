@@ -6,7 +6,7 @@
       </div>
       <el-main class="section">
         <div class="amap-page-container">
-          <div>
+          <div class="mt-1">
             <amap></amap>
           </div>
         </div>
@@ -35,14 +35,8 @@
                   <p class="hotel-intro">{{ hotel.intro }}</p>
                 </div>
               </el-col>
-              <el-col :span="4">
-                <el-button
-                  @click="toFindRoom(hotel)"
-                  type="primary"
-                  round
-                  size="medium"
-                  >enter</el-button
-                >
+              <el-col :span="4" class="enter">
+                <el-button @click="toFindRoom(hotel)" type="primary" round size="medium">Enter</el-button>
               </el-col>
             </el-row>
           </el-card>
@@ -189,5 +183,10 @@ export default {
 
 .purple {
   background-color: #aa94ff;
+}
+
+.enter {
+  position: relative;
+  top:5rem;
 }
 </style>
