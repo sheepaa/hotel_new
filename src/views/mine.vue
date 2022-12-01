@@ -73,7 +73,7 @@
               <el-col :span="6" class="text-center">
                 <router-link to="/shou" class="text-plain">
                   <p class="tool-icon">
-                    <i class="el-icon-star-off order"></i>
+                    <i class="el-icon-star-off info"></i>
                   </p>
                   <p class="tool-text">
                     我的收藏
