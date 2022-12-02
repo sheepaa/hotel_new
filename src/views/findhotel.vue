@@ -41,7 +41,7 @@
                 <el-button @click="showcomments(hotel.hotel_name)" type="primary"  size="medium">Comments</el-button>
                 </el-row>
                 <el-row class="mt-1">
-                  <p class="tool-icon" @click="cli">
+                  <p class="tool-icon" @click="cli(hotel.hotel_name)">
                     <i v-if="isChecked" class="el-icon-star-off info"></i>
                     <i v-else class="el-icon-star-on info"></i>
                   </p>
@@ -144,12 +144,25 @@ export default {
     comments,
   },
   methods: {
-    cli() {
+    cli(hotel_name) {
       if(this.isChecked){
         this.isChecked = false
       }else{
         this.isChecked = true
       }
+
+      this.axios
+      .post("http://localhost:9091/customer/viewComments", {
+        hotel_name: hotel_name,
+      })
+      .then((res) => {
+        console.log(res.data);
+        this.comments = res.data;
+      })
+      .catch((res) => {
+       
+      });
+
     },
     toFindRoom(hotel) {
       this.$store.commit("setHotelName", hotel.hotel_name);

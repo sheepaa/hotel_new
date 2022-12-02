@@ -3,7 +3,7 @@
     <div>
         <el-tabs class="title">我的收藏</el-tabs>
     </div>
-    <el-col :span="22" v-for="(hotel, index) in listdata" :key="index" class="hotel-card">
+    <el-col :span="22" v-for="(hotel, index) in hotel_list" :key="index" class="hotel-card">
         <el-card :body-style="{ padding: '2rem' }" class="purple" v-if=true >
             <el-row class="mt-1 purple">
               <el-col :span="5">
@@ -34,11 +34,21 @@ import footbar from "@/components/footbar.vue";
 import amap from "../components/amap.vue";
 import comments from "@/views/comments.vue";
 export default {
+ 
   data() {
     const self = this;
     return {
       isChecked: true,
       Visible1:false,
+      name_id_map:{
+        "HongKong OOAD hotel WangJiao buranch":0,
+        "GuangZhou OOAD hotel XiaJiao branch":1,
+        "ShangHai OOAD hotel Century Avenue branch":2,
+        "Beijing OOAD hotel DaXing branch":3
+
+      },
+      hotel_name_list:[],
+      hotel_list:[],
       listdata: [
         {
           hotel_location: "香港",
@@ -112,6 +122,21 @@ export default {
     footbar,
     amap,
     comments,
+  },
+  mounted(){
+    this.axios.get("http://localhost:9091/customer/getFork")
+    .then((res) => {
+        console.log(res.data);
+        this.hotel_name_list = res.data;
+        for(let i=0;i<this.hotel_name_list.length;i++){
+          let index = this.name_id_map[this.hotel_name_list[i]];
+          this.hotel_list.append(this.listdata[index]);
+        }
+        console.log(this.hotel_list)
+      })
+      .catch((res) => {
+      
+      });
   },
   methods: {
     cli() {

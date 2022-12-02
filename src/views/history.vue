@@ -71,7 +71,7 @@
               <span>若您想要修改订单，需要取消原订单重新预订。费用会退回您的支付账户中~</span>
               <span slot="footer" class="dialog-footer">
                 <el-button type="danger" @click="changeVisible = false" class="center">取消</el-button>
-                <el-button type="primary" @click="traceback" class="center">确定</el-button>
+                <el-button type="primary" @click="traceback(order.bookingId)" class="center">确定</el-button>
               </span>
             </el-dialog>
           </el-card>
@@ -164,8 +164,20 @@
         })
         dialogVisible = false;
       },
-      traceback() {
+      traceback(booking_id) {
         changeVisible = false;
+        this.axios.get("http://localhost:9091/customer/deleteBooking",{params:{
+          booking_id:booking_id
+        }})
+        then(res => {
+          console.log(res.data)
+          alert("success")
+          this.$router.push('/history')
+        })
+        .catch(res => {
+          console.log("wa!");
+        })
+
       }
     },
     mounted() {
