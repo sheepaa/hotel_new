@@ -224,26 +224,26 @@ export default {
 
 .double1 {
   position: relative;
-  left: 185px;
+  left: 215px;
 }
 
 .double2 {
   position: relative;
-  left: 210;
+  left: 240px;
 }
 
 .double3 {
   position: relative;
-  left: 235px;
+  left: 265px;
 }
 
 .double4 {
   position: relative;
-  left: 265px;
+  left: 295px;
 }
 .double5 {
   position: relative;
-  left: 288px;
+  left: 318px;
 }
 .up {
   bottom: 20px;
