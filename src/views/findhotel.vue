@@ -26,6 +26,9 @@
             <el-row>
               <el-col :span="5">
                 <img :src="hotel.photo" alt="" class="image" />
+                <!-- <el-carousel :interval="5000" arrow="always"><el-carousel-item v-for="item in 4" :key="item">
+                  <h3>{{}}</h3>
+                </el-carousel-item></el-carousel> -->
               </el-col>
               <el-col :span="15">
                 <div style="padding: 14px" class="text-left hotel">
@@ -49,8 +52,17 @@
                 <!-- <dialog-component v-if="Visible1" ref="dialog_comment" ></dialog-component> -->
               </el-col>
             </el-row>
+            <el-row>
+            </el-row>
           </el-card>
         </el-col>
+        <el-card class="ml-4 mt-1 mr-4">
+            <el-carousel :interval="5000" arrow="always">
+              <el-carousel-item v-for="item in 4" :key="item">
+                <h3>{{ graphdata[key] }}</h3>
+              </el-carousel-item>
+            </el-carousel>
+          </el-card>
       </el-main>
       <el-footer class="footer">
         <footbar ref="footbar"></footbar>
@@ -69,6 +81,16 @@ export default {
     return {
       isChecked: true,
       Visible1:false,
+      graphdata: [{
+        photo: require("../assets/img/Hongkong.jpg"),
+      },{
+        photo: require("../assets/img/Guangzhou.jpg"),
+      },{
+        photo: require("../assets/img/Shanghai.jpg"),
+      },{
+        photo: require("../assets/img/Beijing.jpg"),
+      }
+      ],
       listdata: [
         {
           hotel_location: "香港",
@@ -203,7 +225,7 @@ export default {
 }
 
 .image {
-  width: 65%;
+  width: 80%;
   margin-top: 2rem;
   display: block;
   padding: 0rem;
@@ -238,6 +260,7 @@ export default {
 .purple {
   background-color: #aa94ff;
   border: 5px;
+  box-shadow: 5px;
   border-block-color: rgb(226, 255, 9);
 }
 
@@ -248,5 +271,29 @@ export default {
 
 .info {
     color: rgb(247, 160, 30);
+  }
+
+  .el-carousel__item h3 {
+    color: #475669;
+    font-size: 18px;
+    opacity: 0.75;
+    line-height: 300px;
+    margin: 0;
+  }
+  
+  .el-carousel__item:nth-child(2n) {
+    background-color: #99a9bf;
+  }
+  
+  .el-carousel__item:nth-child(2n+1) {
+    background-color: #d3dce6;
+  }
+
+  .ml-4 {
+    margin-left: 4rem;
+  }
+
+  .mr-4 {
+    margin-right: 4rem;
   }
 </style>
