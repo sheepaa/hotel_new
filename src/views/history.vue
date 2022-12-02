@@ -165,18 +165,18 @@
         dialogVisible = false;
       },
       traceback(booking_id) {
-        changeVisible = false;
+        this.changeVisible = false;
         this.axios.get("http://localhost:9091/customer/deleteBooking",{params:{
           booking_id:booking_id
         }})
-        then(res => {
+        .then(res => {
           console.log(res.data)
           alert("success")
           this.$router.push('/history')
         })
         .catch(res => {
-          console.log("wa!");
-        })
+          
+        });
 
       }
     },
