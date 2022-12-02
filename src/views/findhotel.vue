@@ -27,7 +27,7 @@
               <el-col :span="5">
                 <img :src="hotel.photo" alt="" class="image" />
                 <!-- <el-carousel :interval="5000" arrow="always"><el-carousel-item v-for="item in 4" :key="item">
-                  <h3>{{}}</h3>
+                  <h3><img :src="item.photo"/></h3>
                 </el-carousel-item></el-carousel> -->
               </el-col>
               <el-col :span="15">
@@ -56,13 +56,13 @@
             </el-row>
           </el-card>
         </el-col>
-        <el-card class="ml-4 mt-1 mr-4">
+        <!-- <el-card class="ml-4 mt-1 mr-4">
             <el-carousel :interval="5000" arrow="always">
               <el-carousel-item v-for="item in 4" :key="item">
-                <h3>{{ graphdata[key] }}</h3>
+                <h3><img :src="graphdata[item].photo"/></h3>
               </el-carousel-item>
             </el-carousel>
-          </el-card>
+          </el-card> -->
       </el-main>
       <el-footer class="footer">
         <footbar ref="footbar"></footbar>
@@ -290,10 +290,10 @@ export default {
   }
 
   .ml-4 {
-    margin-left: 4rem;
+    margin-left: 30rem;
   }
 
   .mr-4 {
-    margin-right: 4rem;
+    margin-right: 30rem;
   }
 </style>
