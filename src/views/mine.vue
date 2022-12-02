@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="fang" >
     <el-container class="wrapper">
       <el-main class="section text-left">
         <div class="mine-bg"></div>
@@ -20,7 +20,7 @@
             <el-row>
               <el-col :span="6" class="text-center">
                 <router-link to="/history" class="text-plain">
-                  <p class="tool-icon">
+                  <p class="tool-icon modeCard">
                     <i class="el-icon-tickets order"></i>
                   </p>
                   <p class="tool-text">
@@ -83,11 +83,11 @@
             </el-row>
           </div>
         </el-card>
-        <div class="btn-logout">
+        <!-- <div class="btn-logout">
           <el-button type="danger" class="btn-block" @click="dialogVisible = true">
-            <i class="el-icon-switch-button"></i> 退出登录
+            <i class="el-icon-switch-button fang"></i> 退出登录
           </el-button>
-        </div>
+        </div> -->
       </el-main>
       <el-footer class="footer">
         <footbar></footbar>
@@ -226,4 +226,5 @@
 
     color: #67C23A;
   }
+
 </style>

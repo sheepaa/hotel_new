@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-container class="wrapper">
+    <el-container class="wrapper fang">
       <el-main class="section">
         <el-card class="box-card changeinfo-card">
           <div class="text item">
@@ -19,7 +19,7 @@
               <el-col :span="18">
                 <p class="userid text-left">{{ good.info }}</p>
                 <p class="b text-left">所需积分:{{ good.credit }}</p>
-                <el-button type="primary" @click="confirm(good)"
+                <el-button type="primary" @click="confirm(good)" class="fang"
                   ><i class="el-icon-discount"></i> 兑换</el-button
                 >
               </el-col>
@@ -65,7 +65,7 @@
               </el-col>
             </el-row> -->
 
-            <el-button @click="back" type="danger" class="mt-5">返回</el-button>
+            <el-button @click="back" type="danger" class="mt-5 fang">返回</el-button>
           </div>
         </el-card>
       </el-main>

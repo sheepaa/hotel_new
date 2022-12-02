@@ -1,4 +1,4 @@
-<template>
+<template class="fang" >
   <el-card class="box-card ml-4 mr-4 mb-1 mt-1 transparament">
     <el-row>
       <el-tabs class="title">Comments for {{ $store.state.hotelName }}</el-tabs>
@@ -22,22 +22,22 @@
       <el-button
         type="text"
         :disabled="false"
-        class="mt-1"
+        class="mt-1 fang"
         @click="openVideo(item.file_name)"
         >显示图片/视频</el-button
       >
       <el-dialog title="图片/视频" :visible.sync="picVisible" width="60%">
         <span>[pic]</span>
         <span slot="footer" class="dialog-footer">
-          <el-button type="danger" @click="picVisible = false" class="mb-1"
+          <el-button type="danger" @click="picVisible = false" class="mb-1 fang"
             >返回</el-button
           >
         </span>
       </el-dialog>
     </div>
 
-    <el-button @click="back" type="danger" class="mb-1">返回首页</el-button>
-    <el-button @click="backshou" type="danger" class="mb-1">我的收藏</el-button>
+    <el-button @click="back" type="danger" class="mb-1 fang">返回首页</el-button>
+    <el-button @click="backshou" type="danger" class="mb-1 fang">我的收藏</el-button>
   </el-card>
 </template>
 

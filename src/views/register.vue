@@ -1,26 +1,26 @@
 <template>
   <div>
-    <el-container class="wrapper">
+    <el-container class="wrapper fang">
       <el-main class="section text-center">
         <div class="bg-login"></div>
         <el-card class="box-card register-card">
           <div class="text item">
             <p class="register-title">账号注册</p>
             <el-form :model="register" status-icon ref="register" label-width="80px">
-              <el-form-item label="姓名" prop="customer_name" required>
-                <el-input type="text" v-model="register.customer_name" ></el-input>
+              <el-form-item label="昵称" prop="customer_name" required>
+                <el-input type="text" v-model="register.customer_name" placeholder="输入昵称"></el-input>
               </el-form-item>
               <el-form-item label="手机号码" prop="phone_number" required>
-                <el-input type="text" v-model="register.phone_number" ></el-input>
+                <el-input type="text" v-model="register.phone_number" placeholder="输入手机号码(11位)"></el-input>
               </el-form-item>
               <el-form-item label="身份证号" prop="customer_id_number" required>
-                <el-input type="text" v-model="register.customer_id_number"></el-input>
+                <el-input type="text" v-model="register.customer_id_number" placeholder="输入身份证号码"></el-input>
               </el-form-item>
               <el-form-item label="密码" prop="password" required>
-                <el-input type="password" v-model="register.password" ></el-input>
+                <el-input type="password" v-model="register.password" placeholder="输入密码"></el-input>
               </el-form-item>
               <el-form-item label="确认密码" prop="confirm" required>
-                <el-input type="password" v-model="register.confirm" ></el-input>
+                <el-input type="password" v-model="register.confirm" placeholder="请确认密码"></el-input>
               </el-form-item>
             </el-form>
             <el-button :type="btnType" @click="registerBtn('register')" class="registerbtn" :disabled="disabled">

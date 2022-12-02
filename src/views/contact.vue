@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-container class="wrapper">
+    <el-container class="wrapper fang">
       <el-main class="section text-center">
         <el-card class="box-card contact-card">
           <div class="text item">
@@ -14,7 +14,7 @@
             </div>
             <div class="mt text-centre">
               <p class="contact-title">或者</p>
-              <el-button @click="open()" :disabled="false" type="text">点击此处在线联系人工客服</el-button>
+              <el-button @click="open()" :disabled="false" type="text" class="fang" >点击此处在线联系人工客服</el-button>
             </div>
             <el-dialog title="客服" :visible.sync="dialogVisible" width="60%">
               <iframe :src='src' frameborder='0' style="width:40%;height:80%"></iframe>
@@ -22,7 +22,7 @@
                 <el-button type="danger" @click="changeVisible = false" class="center">返回</el-button>
               </span>
             </el-dialog>
-            <el-button @click="back" type="danger" class="mt">返回</el-button>
+            <el-button @click="back" type="danger" class="mt fang">返回</el-button>
           </div>
         </el-card>
       </el-main>

@@ -1,6 +1,6 @@
 <template>
   <el-container>
-    <el-main class="section text-center">
+    <el-main class="section text-center fang">
       <div class="bg-login">
         <el-tabs class="title">欢迎使用酒店预订</el-tabs>
       </div>
@@ -16,7 +16,7 @@
     <el-footer>
       <el-card class="box-card login-card">
         <div class="text item">
-          <p class="login-title">登录</p>
+          <p class="login-title fang">登录</p>
 
           <el-form
             status-icon
@@ -24,14 +24,14 @@
             label-width="80px"
             :model="ruleForm"
           >
-            <el-form-item label="手机号" prop="phone_number" required>
+            <el-form-item class="fang" label="手机号" prop="phone_number" required>
               <el-input
                 v-model="ruleForm.phone_number"
                 autocomplete="off"
                 placeholder="请输入手机号"
               ></el-input>
             </el-form-item>
-            <el-form-item label="密码" prop="password" required>
+            <el-form-item class="fang" label="密码" prop="password" required>
               <el-input
                 v-model="ruleForm.password"
                 autocomplete="off"
@@ -45,12 +45,12 @@
       <el-button
         type="btnType"
         @click="submitForm('ruleForm')"
-        class="loginbtn"
+        class="loginbtn fang"
         :disabled="disabled"
         ><i class="el-icon-s-custom"></i>登录</el-button
       >
       <router-link to="/register">
-        <el-button type="btnType" class="register" :disabled="disabled"
+        <el-button type="btnType" class="register fang" :disabled="disabled"
           ><i class="el-icon-document"></i> 注册</el-button
         >
       </router-link>

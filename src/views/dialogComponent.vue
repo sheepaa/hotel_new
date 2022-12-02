@@ -1,4 +1,4 @@
-<template>
+<template class="fang" >
   <el-dialog title="房间平面分布" :visible.sync="detailVisible" width="90%">
     <el-card class="box-card ml-4 mr-4 mb-1 mt-1 transparament">
       <el-button type="warning" :disabled="disables[101]" class="double1 down" @click="chooseRoom('101')"
@@ -50,10 +50,9 @@
         >
       </el-row>
       <el-row>
-        <el-button type="success" @click="close" class="confirm"
-          >确认</el-button
+        <el-button type="success" @click="close" class="confirm fang" >确认</el-button
         >
-        <el-button type="danger" @click="close" class="confirm">取消</el-button>
+        <el-button type="danger" @click="close" class="confirm fang">取消</el-button>
       </el-row>
     </el-card>
   </el-dialog>

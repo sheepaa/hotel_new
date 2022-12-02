@@ -5,7 +5,7 @@
         <div class="res-bg"></div>
         <el-card class="box-card res-form">
           <div slot="header" class="clearfix">
-            <span>预订客房</span>
+            <span class="fang">预订客房</span>
           </div>
           <div class="text item">
             <!-- <el-form
@@ -15,7 +15,7 @@
               label-width="80px"
               class="demo-ruleForm"
             > -->
-            <el-form label-width="80px" >
+            <el-form label-width="80px" class="fang">
               <el-form-item label="客房类型">
                 <!-- <el-select v-model="resinfo.type" placeholder="请选择" :disabled="lockCondition">
 									<el-option v-for="item in roomtype" :key="item.id" :label="item.typeName" :value="item.id">
@@ -53,6 +53,7 @@
                   :type="searchBtnType"
                   @click="checkroom()"
                   :disabled="checkBtnDis"
+                  class="fang"
                 >
                   <i :class="searchicon"></i>
                   查询可用房间
@@ -61,21 +62,21 @@
               </el-form-item>
 
               <!-- 提供一个房间号码对房间id的映射，即用户选择的是房间号，但存的是房间id -->
-              <el-form-item label="房间号码" >
+              <el-form-item class="fang" label="房间号码" >
                 <el-select v-model="roomnumber">
                   <el-option v-for="item in roomnumbers" :value="item">
                   </el-option>
                 </el-select>
               </el-form-item>
 
-              <el-form-item label="价格">
+              <el-form-item class="fang" label="价格">
                 <!-- <span v-model="resinfo.type" class="room-price">{{sumprice}} 元</span> -->
                 <el-form-item
                   :label="$store.state.order.priceTotal"
                 ></el-form-item>
               </el-form-item>
               <el-form-item>
-                <el-button
+                <el-button class="fang" 
                   type="primary"
                   @click="toPay()"
                   >立即预订</el-button

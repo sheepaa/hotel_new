@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-container class="wrapper">
+    <el-container class="wrapper fang">
       <el-main class="section">
         <el-card class="box-card changeinfo-card">
           <div class="text item">
@@ -44,19 +44,7 @@
 						<el-row :gutter="10">
 							<el-col :span="8" class="text-right">
 							  <p>
-							    性别：
-							  </p>
-							</el-col>
-							<el-col :span="16" class="text-left">
-							  <p>
-							    {{showsex}}
-							  </p>
-							</el-col>
-						</el-row>
-						<el-row :gutter="10">
-							<el-col :span="8" class="text-right">
-							  <p>
-							    用户id：
+							    用户id:
 							  </p>
 							</el-col>
 							<el-col :span="16" class="text-left">
@@ -89,7 +77,7 @@
 							  </p>
 							</el-col>
 						</el-row>
-            <el-button @click="back" type="danger">返回</el-button>
+            <el-button @click="back" type="danger" class="fang" >返回</el-button>
           </div>
         </el-card>
       </el-main>

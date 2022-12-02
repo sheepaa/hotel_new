@@ -1,5 +1,5 @@
 <template>
-  <el-container class="wrapper">
+  <el-container class="wrapper fang">
     <el-main class="section text-left">
       <el-row>
         <el-col :span="24">
@@ -9,7 +9,7 @@
                 当前共查找到<span class="order-num">{{length}}</span>条订单
               </el-col>
               <el-col :span="6" class="text-right">
-                <el-button @click="back" type="text" class="order-back">返回</el-button>
+                <el-button @click="back" type="text" class="order-back fang">返回</el-button>
               </el-col>
             </el-row>
           </el-card>
@@ -37,8 +37,8 @@
                 <p>费用：{{order.price}}</p>
               </el-col>
               <el-col :span="4">
-                <el-button @click="dialogVisible = true" :disabled="false" type="text" class="order-back">评价</el-button>
-                <el-button @click="changeVisible = true" :disabled="false" type="text" class="order-back">修改订单</el-button>
+                <el-button @click="dialogVisible = true" :disabled="false" type="text" class="order-back fang">评价</el-button>
+                <el-button @click="changeVisible = true" :disabled="false" type="text" class="order-back fang">修改订单</el-button>
               </el-col>
             </el-row>
 

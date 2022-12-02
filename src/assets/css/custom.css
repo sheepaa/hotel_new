@@ -41,6 +41,9 @@ body {
   bottom: 0;
   left: 0;
 }
+.fang {
+  font-family: fang;
+}
 
 .el-main {
   max-height: 94vh;

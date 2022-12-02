@@ -8,7 +8,7 @@
           <div class="text item">
             <el-row>
               <el-col :span="16">
-                <p class="text-left">
+                <p class="text-left fang">
                   <i class="el-icon-location-outline"></i>
                   {{ $store.state.hotelName }}
                 </p>
@@ -16,7 +16,7 @@
               <!-- 回到findhotel -->
               <el-col :span="8">
                 <p class="text-right">
-                  选择位置<i class="el-icon-arrow-right"></i>
+                  <i class="el-icon-arrow-right"></i>
                 </p>
               </el-col>
             </el-row>
@@ -51,7 +51,7 @@
                 <el-button
                   type="primary"
                   icon="el-icon-search"
-                  class="btn-block"
+                  class="btn-block fang"
                   @click="searchBtn"
                   >查找空余房间
                 </el-button>
@@ -76,17 +76,17 @@
                 </el-col>
                 <el-col :span="8">
                   <div style="padding: 14px" class="text-left room">
-                    <p class="room-title">
+                    <p class="room-title fang">
                       {{ room.room_type }}
                     </p>
 
-                    <p class="room-price" v-if="(room.price_final === room.price_initial)">￥{{ room.price_initial }}</p>
+                    <p class="room-price mt-1" v-if="(room.price_final === room.price_initial)">￥{{ room.price_initial }}</p>
 
                     <p v-else>
-                      <span style="color: firebrick; font-size: 25px"
+                      <span style="color: firebrick; font-size: 25px" class="mt-1"
                         >￥{{room.price_final}}</span
                       >
-                      <span
+                      <span class="mt-1"
                         style="text-decoration: line-through; font-size: 12px"
                         >¥{{ room.price_initial }}</span
                       >
@@ -95,7 +95,7 @@
                 </el-col>
                 <el-col :span="8" style="margin-bottom: 5px">
                   <el-row align="center">
-                    <el-button
+                    <el-button class="fang mt-1"
                       type="primary"
                       plain
                       @click="clickDisplayInfo(room)"
@@ -103,7 +103,7 @@
                     >
                   </el-row>
                   <el-row>
-                    <el-button type="primary" plain @click="toOrder(room)"
+                    <el-button  class="fang mt-1 mb-1" type="primary" plain @click="toOrder(room)"
                       >订房</el-button
                     >
                   </el-row>

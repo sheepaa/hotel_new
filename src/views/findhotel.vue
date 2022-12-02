@@ -2,7 +2,7 @@
   <div>
     <el-container class="wrapper">
       <div :style="{ width: '100%', height: '80px' }">
-        <el-tabs class="title">在地图上选择酒店</el-tabs>
+        <el-tabs class="title"><i class="el-icon-location-outline"></i>选择目的地：</el-tabs>
       </div>
       <el-main class="section">
         <div class="amap-page-container">
@@ -32,7 +32,7 @@
                   <p class="hotel-title">
                     {{ hotel.hotel_location }}
                   </p>
-                  <p class="hotel-intro">{{ hotel.intro }}</p>
+                  <p class="hotel-intro fang">{{ hotel.intro }}</p>
                 </div>
               </el-col>
               <el-col :span="4" class="enter">
@@ -191,6 +191,7 @@ export default {
 
 .image {
   width: 65%;
+  margin-top: 2rem;
   display: block;
   padding: 0rem;
   border: 1px solid transparent;
@@ -223,6 +224,8 @@ export default {
 
 .purple {
   background-color: #aa94ff;
+  border: 5px;
+  border-block-color: rgb(226, 255, 9);
 }
 
 .enter {

@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="fang" >
     <div>
         <el-tabs class="title">我的收藏</el-tabs>
     </div>
@@ -19,8 +19,8 @@
               </el-col>
               <el-col :span="4" class="enter">
                 <el-row>
-                <el-button @click="toFindRoom(hotel)" type="primary"  size="medium">Enter</el-button>
-                <el-button @click="showcomments()" type="primary"  size="medium">Comments</el-button>
+                <el-button @click="toFindRoom(hotel)" type="primary"  size="medium" class="fang" >Enter</el-button>
+                <el-button @click="showcomments()" type="primary"  size="medium" class="fang" >Comments</el-button>
                 </el-row>
             </el-col>
             </el-row>

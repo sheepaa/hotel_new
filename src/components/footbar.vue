@@ -4,22 +4,22 @@
       <el-row>
         <el-col :span="6">
           <router-link to="/findhotel">
-            <div :class="findhCls" v-on:click="findhBtn"><i class="el-icon-location"></i> 找酒店</div>
+            <div :class="findhCls " v-on:click="findhBtn"><i class="el-icon-location"></i> <i class="fang">目的地</i><i class="el-icon-arrow-right ml-1"></i></div>
           </router-link>
         </el-col>
         <el-col :span="6">
           <router-link to="/findroom">
-            <div :class="findCls" v-on:click="findBtn"><i class="el-icon-s-home"></i> 找房</div>
+            <div :class="findCls" v-on:click="findBtn"><i class="el-icon-s-home"></i> <i class="fang">房型</i><i class="el-icon-arrow-right ml-1"></i></div>
           </router-link>
         </el-col>
         <el-col :span="6">
           <router-link to="/reservation-c">
-            <div :class="reservationCls" v-on:click="reservationBtn"><i class="el-icon-s-order"></i> 订房</div>
+            <div :class="reservationCls" v-on:click="reservationBtn"><i class="el-icon-s-order"></i> <i class="fang">预订</i><i class="el-icon-arrow-right ml-1"></i></div>
           </router-link>
         </el-col>
         <el-col :span="6">
           <router-link to="/mine">
-            <div :class="mineCls" v-on:click="mineBtn"><i class="el-icon-user-solid"></i> 我的</div>
+            <div :class="mineCls" v-on:click="mineBtn"><i class="el-icon-user-solid"></i> <i class="fang">我的</i></div>
           </router-link>
         </el-col>
       </el-row>
